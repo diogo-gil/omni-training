@@ -56,6 +56,7 @@ public interface TrainingMicroserviceResource {
 	
 	@GET
 	@Path("/dish")
+	@ApiOperation(value = "get all dishes")
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Ok", response = DishDTO.class, responseContainer = "List"),
 			@ApiResponse(code = 400, message = "Bad Request", response = Error.class),
