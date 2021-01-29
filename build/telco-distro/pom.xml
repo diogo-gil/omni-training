@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  #%L
+  Distro
+  %%
+  Copyright (C) 2017 - 2019 Celfocus Omnichannel
+  %%
+  All rights reserved. This software is protected under several
+  Laws in various countries. All content, layout, design of this document are the
+  intellectual property of Celfocus, Novabase Business Solutions S.A. 
+  and its licensors. The disclosure,copying, adaptation, citation, transcription, 
+  translation, modification, decompilation, reverse engineering, derivatives, 
+  integration, development and/or any other form of total or partial use of the 
+  content of this document and/or accessible through or via the contents, by any 
+  possible means without the respective authorization or licensing by the owner of 
+  the intellectual property rights is prohibited, the offenders being subject to civil 
+  and/or criminal prosecution and liability. The user or licensee of all or part of this 
+  document by any means may only use the document under the terms and conditions agreed
+  upon with the owner of the intellectual property rights, and for the purposes
+  justifying the granting of the license or authorization, without which the
+  unauthorized use may subject the offenders to civil or criminal prosecution
+  under applicable Laws.
+  #L%
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- ====================================================================== -->
+    <!-- = P A R E N T- P R O J E C T- D E S C R I P T I O N ================== -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>com.celfocus.omnichannel.telco.plugins</groupId>
+        <artifactId>telco-plugins-distro</artifactId>
+        <version>2.1.2</version>
+    </parent>
+    <!-- ====================================================================== -->
+    <!-- = P R O J E C T- D E S C R I P T I O N =============================== -->
+    <!-- ====================================================================== -->
+    <groupId>com.celfocus.omnichannel.telco</groupId>
+    <artifactId>telco-distro</artifactId>
+    <version>2.9.99-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Distro</name>
+    <description>Distro</description>
+    <inceptionYear>2017</inceptionYear>
+    <!-- ====================================================================== -->
+    <!-- = P R O J E C T- P R O P E R T I E S ================================= -->
+    <!-- ====================================================================== -->
+    <properties>
+        <!-- SCM MANAGEMENT -->
+        <scm.path>celfocus/omni-telco.git</scm.path>
+        <!-- GITFLOW MANAGEMENT -->
+        <gitflow.versionTagPrefix>version/distro/</gitflow.versionTagPrefix>
+        <!-- ###############################################      -->
+        <!-- ###########   DISTRO MANAGEMENT   ############      -->
+        <!-- ###############################################      -->
+        <distro.group>telco-distro</distro.group>
+        <!-- ###############################################      -->
+        <!-- ###########   VERSION MANAGEMENT   ############      -->
+        <!-- ###############################################      -->
+        <!-- ##########    MODULES MANAGEMENT    ###########      -->
+        <!-- ###########     APPS MANAGEMENT    ############      -->
+        <!-- OVERRIDES -->
+        <telco.apps.telcobase.version>1.0.3</telco.apps.telcobase.version>
+        <!-- ###########   OVERRIDE MANAGEMENT    ############      -->
+        <fs.plugins.distro.version>2.5.1</fs.plugins.distro.version>
+        <!-- ###############################################      -->
+        <!-- ###########   VERSION MANAGEMENT   ############      -->
+        <!-- ###############################################      -->
+        <!-- DEPENDENCY MANAGEMENT -->
+        <!-- Apps -->
+        <!-- TELCOBASE -->
+        <lib.com.celfocus.omnichannel.telco.apps.telcobase-app.version>${telco.apps.telcobase.version}</lib.com.celfocus.omnichannel.telco.apps.telcobase-app.version>
+        <lib.com.celfocus.omnichannel.telco.apps.telcobase-cms.version>${telco.apps.telcobase.version}</lib.com.celfocus.omnichannel.telco.apps.telcobase-cms.version>
+        <lib.com.celfocus.omnichannel.telco.apps.telcobase-karafarchive.version>${telco.apps.telcobase.version}</lib.com.celfocus.omnichannel.telco.apps.telcobase-karafarchive.version>
+        <!-- # Common -->
+        <!-- TILE MANAGEMENT -->
+        <tile.omnichannel.telco.distro.core.coordinates>com.celfocus.omnichannel.telco.distro.core:core-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.core.coordinates>
+        <tile.omnichannel.telco.distro.cms.coordinates>com.celfocus.omnichannel.telco.distro.cms:cms-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.cms.coordinates>
+        <tile.omnichannel.telco.distro.generic.coordinates>com.celfocus.omnichannel.telco.distro.generic:generic-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.generic.coordinates>
+        <tile.omnichannel.telco.distro.aem.coordinates>com.celfocus.omnichannel.telco.distro.aem:aem-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.aem.coordinates>
+    </properties>
+    <!-- ====================================================================== -->
+    <!-- = D E P E N D E N C Y M A N A G E M E N T =========================== -->
+    <!-- ====================================================================== -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- # Apps -->
+            <!-- # Telcobase -->
+            <dependency>
+                <groupId>com.celfocus.omnichannel.telco.apps</groupId>
+                <artifactId>telcobase-app</artifactId>
+                <version>${lib.com.celfocus.omnichannel.telco.apps.telcobase-app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.celfocus.omnichannel.telco.apps</groupId>
+                <artifactId>telcobase-cms</artifactId>
+                <version>${lib.com.celfocus.omnichannel.telco.apps.telcobase-cms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.celfocus.omnichannel.telco.apps</groupId>
+                <artifactId>telcobase-karafarchive</artifactId>
+                <version>${lib.com.celfocus.omnichannel.telco.apps.telcobase-karafarchive.version}</version>
+                <type>kar</type>
+            </dependency>
+            <!-- # Modules -->
+        </dependencies>
+    </dependencyManagement>
+    <!-- ====================================================================== -->
+    <!-- = P R O J E C T- M O D U L E S ======================================= -->
+    <!-- ====================================================================== -->
+    <modules>
+        <module>../../distro/core/core</module>
+        <module>../../distro/cms/cms</module>
+    </modules>
+</project>

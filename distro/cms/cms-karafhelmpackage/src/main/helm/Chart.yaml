@@ -1,0 +1,19 @@
+name: ${k8s.name}
+version: ${project.version}
+appVersion: "${project.version}"
+description: ${project.description}.
+keywords:
+  - karaf
+  - OSGi
+  - cms
+  - sling
+  - content
+  - app
+  - frontend
+home: https://${scm.server}/${scm.path}
+icon: https://cwiki.apache.org/confluence/download/attachments/24189485/karaf-logo.png
+sources:
+  - https://${scm.server}/${scm.path}
+maintainers:
+  - name: ${project.organization.name}
+    email: ${mailingLists.default.post}

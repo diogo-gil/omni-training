@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Loggers>
+	<Root level="INFO">
+		<AppenderRef ref="STDERR" />
+		<AppenderRef ref="ROLLING_FILE" />
+		<AppenderRef ref="PAX_OSGI"/>
+	</Root>
+
+	<Logger name="org.apache.aries.spifly.dynamic.bundle" level="ERROR"/>
+	<Logger name="com.celfocus.platform.modules" level="DEBUG"/>
+	<Logger name="com.celfocus.platform.plugins.modules" level="DEBUG"/>
+	<Logger name="com.celfocus.platform.plugins.apps" level="DEBUG"/>
+	<Logger name="com.celfocus.omnichannel.telco.plugins.modules" level="DEBUG"/>
+	<Logger name="com.celfocus.omnichannel.telco.plugins.apps" level="DEBUG"/>
+	<Logger name="com.celfocus.omnichannel.telco.modules" level="DEBUG"/>
+	<Logger name="com.celfocus.omnichannel.telco.apps" level="DEBUG"/>
+</Loggers>

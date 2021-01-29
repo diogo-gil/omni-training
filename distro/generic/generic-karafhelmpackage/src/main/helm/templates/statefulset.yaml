@@ -1,0 +1,224 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: {{ template "generic.fullname" . }}
+  labels:
+    app: {{ template "generic.name" . }}
+    chart: {{ template "generic.chartname" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: {{ .Values.app.component }}
+  annotations:
+    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "generic.name" . }}
+  serviceName: {{ template "generic.headlessservice" . }}
+  replicas: {{ .Values.app.replicaCount }}
+  podManagementPolicy: {{ .Values.app.podManagementPolicy | quote }}
+  revisionHistoryLimit: {{ .Values.app.revisionHistoryLimit }}
+  updateStrategy:
+    type: {{ .Values.app.updateStrategy | quote }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "generic.name" . }}
+        chart: {{ template "generic.chartname" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+        component: {{ .Values.app.component }}
+    spec:
+      restartPolicy: {{ .Values.app.restartPolicy | quote }}
+      terminationGracePeriodSeconds: {{ .Values.app.terminationGracePeriodSeconds }}
+      {{- $antiAffinity := .Values.app.antiAffinity | default "" -}}
+      {{- if eq $antiAffinity "hard" }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: "kubernetes.io/hostname"
+              labelSelector:
+                matchLabels:
+                  app: "{{ template "generic.name" . }}"
+                  release: "{{ .Release.Name }}"
+                  component: "{{ .Values.app.name }}"
+      {{- else if eq $antiAffinity "soft" }}
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              topologyKey: "kubernetes.io/hostname"
+              labelSelector:
+                matchLabels:
+                  app: "{{ template "generic.name" . }}"
+                  release: "{{ .Release.Name }}"
+                  component: "{{ .Values.app.name }}"
+      {{- end }}
+      containers:
+        - name: generic
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          env:
+            - name: KUBERNETES_POD_IP
+              valueFrom: { fieldRef: { fieldPath: status.podIP } }
+            - name: TZ
+              value: {{ .Values.conf.timezone | quote }}
+            - name: KARAF_ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "generic.credentialsecret" . }}
+                  key: adminUser
+            - name: KARAF_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "generic.credentialsecret" . }}
+                  key: adminPassword
+            - name: KARAF_MIN_MEM
+              value: {{ .Values.conf.minMem | quote }}
+            - name: KARAF_MAX_MEM
+              value: {{ .Values.conf.maxMem | quote }}
+            - name: KARAF_HTTP_PORT
+              value: {{ .Values.service.httpInternalPort| quote }}
+            - name: KARAF_SSH_HOST
+              valueFrom: { fieldRef: { fieldPath: status.podIP } }
+            - name: KARAF_SSH_PORT
+              value: {{ .Values.service.sshInternalPort| quote }}
+            - name: KARAF_RMI_SERVER_HOST
+              valueFrom: { fieldRef: { fieldPath: status.podIP } }
+            - name: KARAF_RMI_SERVER_PORT
+              value: {{ .Values.service.rmiServerInternalPort | quote }}
+            - name: KARAF_RMI_REGISTRY_HOST
+              valueFrom: { fieldRef: { fieldPath: status.podIP } }
+            - name: KARAF_RMI_REGISTRY_PORT
+              value: {{ .Values.service.rmiRegistryInternalPort | quote }}
+            - name: KARAF_CLEAN_ALL
+              value: {{ .Values.conf.cleanAll | quote }}
+            - name: KARAF_CLEAN_CACHE
+              value: {{ .Values.conf.cleanCache | quote }}
+            - name: KARAF_CUSTOM_OPTS
+              value: {{ .Values.conf.customOpts | quote }}
+            - name: KARAF_M2_PROFILE
+              value: {{ .Values.conf.m2Profile | quote }}
+            - name: KARAF_M2_SETTINGS
+              value: {{ .Values.conf.m2Settings | quote }}
+            - name: KARAF_M2_SERVER_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "core.credentialsecret" . }}
+                  key: m2User
+            - name: KARAF_M2_SERVER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "core.credentialsecret" . }}
+                  key: m2Password
+            - name: KARAF_M2_MIRROR_URL
+              value: {{ .Values.conf.m2MirrorUrl | quote }}
+            - name: KARAF_M2_MIRROR_MIRROROF
+              value: {{ .Values.conf.m2MirrorMirrorOf | quote }}
+            - name: KARAF_CELLAR_GROUP
+              value: {{ .Values.conf.cellar.group | quote }}
+            - name: KARAF_CELLAR_BUNDLE_SYNC
+              value: {{ .Values.conf.cellar.bundleSync | quote }}
+            - name: KARAF_CELLAR_CONFIG_SYNC
+              value: {{ .Values.conf.cellar.configSync | quote }}
+            - name: KARAF_CELLAR_FEATURE_SYNC
+              value: {{ .Values.conf.cellar.featureSync | quote }}
+            - name: KARAF_CELLAR_PRODUCER
+              value: {{ .Values.conf.cellar.producer | quote }}
+            - name: KARAF_CELLAR_CONSUMER
+              value: {{ .Values.conf.cellar.consumer | quote }}
+            - name: KARAF_CELLAR_BUNDLE_EVENT_HANDLER
+              value: {{ .Values.conf.cellar.bundleEventHandler | quote }}
+            - name: KARAF_CELLAR_CONFIGURATION_EVENT_HANDLER
+              value: {{ .Values.conf.cellar.configurationEventHandler | quote }}
+            - name: KARAF_CELLAR_FEATURE_EVENT_HANDLER
+              value: {{ .Values.conf.cellar.featureEventHandler | quote }}
+            - name: KARAF_CELLAR_REMOTE_SERVICE_CALL_HANDLER
+              value: {{ .Values.conf.cellar.remoteServiceCallHandler | quote }}
+            - name: KARAF_CELLAR_CLUSTER_EVENT_HANDLER
+              value: {{ .Values.conf.cellar.clusterEventHandler | quote }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.httpInternalPort }}
+              protocol: TCP
+            - name: ssh
+              containerPort: {{ .Values.service.sshInternalPort }}
+              protocol: TCP
+            - name: rmi-server
+              containerPort: {{ .Values.service.rmiServerInternalPort }}
+              protocol: TCP
+            - name: rmi-registry
+              containerPort: {{ .Values.service.rmiRegistryInternalPort }}
+              protocol: TCP
+          {{- if .Values.service.readinessProbe.enabled }}
+          readinessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - ./kCmd.sh ready
+            initialDelaySeconds: {{ .Values.service.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.service.readinessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.service.readinessProbe.timeoutSeconds }}
+            successThreshold: {{ .Values.service.readinessProbe.successThreshold }}
+            failureThreshold: {{ .Values.service.readinessProbe.failureThreshold }}
+          {{- end }}
+          {{- if .Values.service.livenessProbe.enabled }}
+          livenessProbe:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - ./kCmd.sh alive
+            initialDelaySeconds: {{ .Values.service.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.service.livenessProbe.periodSeconds }}
+            timeoutSeconds: {{ .Values.service.livenessProbe.timeoutSeconds }}
+            successThreshold: {{ .Values.service.livenessProbe.successThreshold }}
+            failureThreshold: {{ .Values.service.livenessProbe.failureThreshold }}
+          {{- end }}
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - ./kPostStart.sh
+            preStop:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - ./kPreStop.sh
+          resources: {}
+          volumeMounts:
+            - name: generic-config
+              mountPath: /karaf-config
+            - name: generic-data
+              mountPath: /karaf-data
+      imagePullSecrets:
+        - name: {{ template "generic.registrysecret" . }}
+      volumes:
+        - name: generic-config
+          configMap:
+            name: {{ template "generic.fullname" . }}
+            items:
+              {{- range $key, $val := .Files.Glob "etc/*.cfg" }}
+              - key: {{ base $key }}
+                path: {{ $key }}
+              {{- end }}
+              {{- range $key, $val := .Files.Glob "deploy/**.*" }}
+              - key: {{ base $key }}
+                path: {{ $key }}
+              {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: generic-data
+        annotations:
+      spec:
+        storageClassName: {{ .Values.persistence.storageClass | quote }}
+        accessModes: 
+          - {{ .Values.persistence.accessMode | quote }}
+        resources:
+          requests:
+            storage: {{ .Values.persistence.size }}

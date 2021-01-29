@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- ====================================================================== -->
+    <!-- = B U I L D- D E F I N I T I O N ===================================== -->
+    <!-- ====================================================================== -->
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>io.digitaljourney.platform.tooling.plugins</groupId>
+                            <artifactId>karaf-maven-plugin</artifactId>
+                            <configuration>
+                                <dependencies combine.children="append">
+                                    <!-- Add additional dependencies here -->
+                                </dependencies>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.karaf.tooling</groupId>
+                            <artifactId>karaf-maven-plugin</artifactId>
+                            <configuration>
+                                <bootRepositories>
+                                    <!-- Platform Providers -->
+                                    <repository>mvn:io.digitaljourney.platform.plugins.providers/rsprovider-karafarchive/${platform.plugins.providers.rsprovider.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.providers/xmlprovider-karafarchive/${platform.plugins.providers.xmlprovider.version}/xml/features</repository>
+                                    <!-- Platform Modules -->
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/journeyworkflowengine-karafarchive/${platform.plugins.modules.journeyworkflowengine.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/rulesengine-karafarchive/${platform.plugins.modules.rulesengine.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/processcontinuity-karafarchive/${platform.plugins.modules.processcontinuity.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/message-karafarchive/${platform.plugins.modules.message.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/blob-karafarchive/${platform.plugins.modules.blob.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/logservice-karafarchive/${platform.plugins.modules.logservice.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/cachemanager-karafarchive/${platform.plugins.modules.cachemanager.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/configurationmanager-karafarchive/${platform.plugins.modules.configurationmanager.version}/xml/features</repository>
+                                    <!-- Platform Apps -->
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/foundation-karafarchive/${platform.plugins.apps.foundation.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/errorpages-karafarchive/${platform.plugins.apps.errorpages.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/ufe-karafarchive/${platform.plugins.apps.ufe.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/journeydesigner-karafarchive/${platform.plugins.apps.journeydesigner.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/operationconsole-karafarchive/${platform.plugins.apps.operationconsole.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/logviewer-karafarchive/${platform.plugins.apps.logviewer.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/cachemanagerapp-karafarchive/${platform.plugins.apps.cachemanagerapp.version}/xml/features</repository>
+                                    <!-- Telco Plugins Modules -->
+                                    <!-- Telco Plugins Apps -->
+                                    <!-- Telco Modules -->
+                                    <!-- Telco Apps -->
+                                    <repository>mvn:com.celfocus.omnichannel.telco.apps/telcobase-karafarchive/${telco.apps.telcobase.version}/xml/features</repository>
+                                </bootRepositories>
+                                <bootFeatures>
+                                    <!-- platform modules -->
+                                    <feature>wrap</feature>
+                                    <feature>shell</feature>
+                                    <feature>feature</feature>
+                                    <feature>jaas</feature>
+                                    <feature>ssh</feature>
+                                    <feature>management</feature>
+                                    <feature>bundle</feature>
+                                    <feature>config</feature>
+                                    <feature>deployer</feature>
+                                    <feature>diagnostic</feature>
+                                    <feature>instance</feature>
+                                    <feature>kar</feature>
+                                    <feature>log</feature>
+                                    <feature>package</feature>
+                                    <feature>service</feature>
+                                    <feature>system</feature>
+                                    <feature>scr</feature>
+                                    <feature>eventadmin</feature>
+                                    <feature>http</feature>
+                                    <feature>http-whiteboard</feature>
+                                    <feature>webconsole</feature>
+                                    <feature>service-wrapper</feature>
+                                    <feature>aries-rsa-provider-tcp</feature>
+                                    <feature>aries-rsa-provider-fastbin</feature>
+                                    <feature>base-boot-modules</feature>
+                                    <feature>aries-rsa-discovery-config</feature>
+                                    <feature>errorpages</feature>
+                                    <feature>standard-cxf-jaxrs-swagger</feature>
+                                    <feature>standard-shiro-aspectj</feature>
+                                    <!-- platform Apps -->
+                                    <feature>foundation</feature>
+                                    <feature>journeydesigner</feature>
+                                    <feature>ufe</feature>
+                                    <feature>operationconsole</feature>
+                                    <feature>logviewer</feature>
+                                    <feature>cachemanagerapp</feature>
+                                    <feature>journeyworkflowengine-gateway-rest-spring</feature>
+                                    <feature>journeyworkflowengine-gateway-aspect-mvc</feature>
+                                    <!--<feature>base-servicetracker-kubernetes</feature>-->
+                                    <!-- Telco Plugins Modules -->
+                                    <!-- Telco Plugins Apps -->
+                                    <!-- Telco Modules -->
+                                    <!-- Telco Apps -->
+                                    <feature>telcobase</feature>
+                                </bootFeatures>
+                                <installedFeatures/>
+                                <installedBundles>
+                                    <bundle>mvn:io.digitaljourney.platform.plugins.providers/rsprovider-core/${platform.plugins.providers.rsprovider.version}</bundle>
+                                    <bundle>mvn:io.digitaljourney.platform.plugins.providers/xmlprovider-core/${platform.plugins.providers.xmlprovider.version}</bundle>
+                                </installedBundles>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>io.digitaljourney.platform.tooling.plugins</groupId>
+                            <artifactId>remoteresources-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <id>process-installable-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <resourceBundle>mvn:io.digitaljourney.platform.plugins.distro.cms/cms-configuration/${io.digitaljourney.platform.plugins.version}</resourceBundle>
+                                            <resourceBundle>mvn:com.celfocus.omnichannel.telco.plugins.distro.cms/cms-configuration/${com.celfocus.omnichannel.telco.plugins.version}</resourceBundle>
+                                            <resourceBundle>mvn:com.celfocus.omnichannel.telco.distro.cms/cms-configuration/${com.celfocus.omnichannel.telco.version}</resourceBundle>
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>process-karaf-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <!-- Add additional karaf resources here -->
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>process-karaf-docker-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <!-- Add additional karaf docker resources here -->
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>process-karaf-k8s-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <!-- Add additional karaf k8s resources here -->
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+        <profile>
+            <id>base</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>io.digitaljourney.platform.tooling.plugins</groupId>
+                            <artifactId>karaf-maven-plugin</artifactId>
+                            <configuration>
+                                <dependencies combine.children="append">
+                                    <!-- Add additional dependencies here -->
+                                </dependencies>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.karaf.tooling</groupId>
+                            <artifactId>karaf-maven-plugin</artifactId>
+                            <configuration>
+                                <bootRepositories>
+                                    <!-- Platform Providers -->
+                                    <repository>mvn:io.digitaljourney.platform.plugins.providers/rsprovider-karafarchive/${platform.plugins.providers.rsprovider.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.providers/xmlprovider-karafarchive/${platform.plugins.providers.xmlprovider.version}/xml/features</repository>
+                                    <!-- Platform Modules -->
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/journeyworkflowengine-karafarchive/${platform.plugins.modules.journeyworkflowengine.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/rulesengine-karafarchive/${platform.plugins.modules.rulesengine.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/processcontinuity-karafarchive/${platform.plugins.modules.processcontinuity.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/message-karafarchive/${platform.plugins.modules.message.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/blob-karafarchive/${platform.plugins.modules.blob.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/logservice-karafarchive/${platform.plugins.modules.logservice.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/cachemanager-karafarchive/${platform.plugins.modules.cachemanager.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.modules/configurationmanager-karafarchive/${platform.plugins.modules.configurationmanager.version}/xml/features</repository>
+                                    <!-- Platform Apps -->
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/foundation-karafarchive/${platform.plugins.apps.foundation.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/errorpages-karafarchive/${platform.plugins.apps.errorpages.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/ufe-karafarchive/${platform.plugins.apps.ufe.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/journeydesigner-karafarchive/${platform.plugins.apps.journeydesigner.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/operationconsole-karafarchive/${platform.plugins.apps.operationconsole.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/logviewer-karafarchive/${platform.plugins.apps.logviewer.version}/xml/features</repository>
+                                    <repository>mvn:io.digitaljourney.platform.plugins.apps/cachemanagerapp-karafarchive/${platform.plugins.apps.cachemanagerapp.version}/xml/features</repository>
+                                    <!-- Telco Plugins Modules -->
+                                    <!-- Telco Plugins Apps -->
+                                    <!-- Telco Modules -->
+                                    <!-- Telco Apps -->
+                                    <repository>mvn:com.celfocus.omnichannel.telco.apps/telcobase-karafarchive/${telco.apps.telcobase.version}/xml/features</repository>
+                                </bootRepositories>
+                                <bootFeatures>
+                                    <!-- platform modules -->
+                                    <feature>wrap</feature>
+                                    <feature>shell</feature>
+                                    <feature>feature</feature>
+                                    <feature>jaas</feature>
+                                    <feature>ssh</feature>
+                                    <feature>management</feature>
+                                    <feature>bundle</feature>
+                                    <feature>config</feature>
+                                    <feature>deployer</feature>
+                                    <feature>diagnostic</feature>
+                                    <feature>instance</feature>
+                                    <feature>kar</feature>
+                                    <feature>log</feature>
+                                    <feature>package</feature>
+                                    <feature>service</feature>
+                                    <feature>system</feature>
+                                    <feature>scr</feature>
+                                    <feature>eventadmin</feature>
+                                    <feature>http</feature>
+                                    <feature>http-whiteboard</feature>
+                                    <feature>webconsole</feature>
+                                    <feature>service-wrapper</feature>
+                                    <feature>aries-rsa-provider-tcp</feature>
+                                    <feature>aries-rsa-provider-fastbin</feature>
+                                    <feature>base-boot-modules</feature>
+                                    <feature>aries-rsa-discovery-config</feature>
+                                    <feature>errorpages</feature>
+                                    <feature>standard-cxf-jaxrs-swagger</feature>
+                                    <feature>standard-shiro-aspectj</feature>
+                                    <!-- platform Apps -->
+                                    <feature>foundation</feature>                                    
+                                    <feature>journeydesigner</feature>
+                                    <feature>ufe</feature>
+                                    <feature>operationconsole</feature>
+                                    <feature>logviewer</feature>
+                                    <feature>cachemanagerapp</feature>
+                                    <feature>journeyworkflowengine-gateway-rest-spring</feature>
+                                    <feature>journeyworkflowengine-gateway-aspect-mvc</feature>
+                                    <!--<feature>base-servicetracker-kubernetes</feature>-->
+                                    <!-- Telco Plugins Modules -->
+                                    <!-- Telco Plugins Apps -->
+                                    <!-- Telco Modules -->
+                                    <!-- Telco Apps -->
+                                    <feature>telcobase</feature>
+                                </bootFeatures>
+                                <installedFeatures/>
+                                <installedBundles>
+                                    <bundle>mvn:io.digitaljourney.platform.plugins.providers/rsprovider-core/${platform.plugins.providers.rsprovider.version}</bundle>
+                                    <bundle>mvn:io.digitaljourney.platform.plugins.providers/xmlprovider-core/${platform.plugins.providers.xmlprovider.version}</bundle>
+                                </installedBundles>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>io.digitaljourney.platform.tooling.plugins</groupId>
+                            <artifactId>remoteresources-maven-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <id>process-installable-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <resourceBundle>mvn:io.digitaljourney.platform.plugins.distro.cms/cms-configuration/${io.digitaljourney.platform.plugins.version}</resourceBundle>
+                                            <resourceBundle>mvn:com.celfocus.omnichannel.telco.plugins.distro.cms/cms-configuration/${com.celfocus.omnichannel.telco.plugins.version}</resourceBundle>
+                                            <resourceBundle>mvn:com.celfocus.omnichannel.telco.distro.cms/cms-configuration/${com.celfocus.omnichannel.telco.version}</resourceBundle>
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>process-karaf-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <!-- Add additional karaf resources here -->
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>process-karaf-docker-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <!-- Add additional karaf docker resources here -->
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                                <execution>
+                                    <id>process-karaf-k8s-remote-resources</id>
+                                    <configuration tiles-keep-id="true">
+                                        <resourceBundles combine.children="append">
+                                            <!-- Add additional karaf k8s resources here -->
+                                        </resourceBundles>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.digitaljourney.platform.tooling.plugins</groupId>
+                    <artifactId>karaf-maven-plugin</artifactId>
+                    <configuration/>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

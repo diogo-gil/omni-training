@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- = P A R E N T- P R O J E C T- D E S C R I P T I O N ================== -->
+	<!-- ====================================================================== -->
+
+	<parent>
+		<groupId>com.celfocus.omnichannel.telco.deploy.k8s.delivery</groupId>
+		<artifactId>k8s-delivery</artifactId>
+        <version>2.0.7-SNAPSHOT</version>
+		<relativePath>../k8s-delivery</relativePath>
+	</parent>
+
+	<!-- ====================================================================== -->
+	<!-- = P R O J E C T- D E S C R I P T I O N =============================== -->
+	<!-- ====================================================================== -->
+
+	<artifactId>k8s-deliveryhelmpackage</artifactId>
+
+	<name>Deploy :: K8s :: Delivery :: Helm Package</name>
+	<description>Delivery helm package</description>
+
+
+	<properties>
+		<k8s.cave.persistence.storageClass>default</k8s.cave.persistence.storageClass>
+		<k8s.cms.author.persistence.storageClass>default</k8s.cms.author.persistence.storageClass>
+		<k8s.cms.generic.persistence.storageClass>default</k8s.cms.generic.persistence.storageClass>
+		<k8s.cms.publish.persistence.storageClass>default</k8s.cms.publish.persistence.storageClass>
+		<k8s.core.persistence.storageClass>default</k8s.core.persistence.storageClass>
+		<k8s.elasticsearch.data.persistence.storageClass>default</k8s.elasticsearch.data.persistence.storageClass>
+		<k8s.elasticsearch.generic.persistence.storageClass>default</k8s.elasticsearch.generic.persistence.storageClass>
+		<k8s.elasticsearch.master.persistence.storageClass>default</k8s.elasticsearch.master.persistence.storageClass>
+		<k8s.orientdb.persistence.storageClass>default</k8s.orientdb.persistence.storageClass>
+		<k8s.postgres.persistence.storageClass>default</k8s.postgres.persistence.storageClass>
+		<k8s.zookeeper.persistence.storageClass>default</k8s.zookeeper.persistence.storageClass>
+	</properties>
+
+	<!-- ====================================================================== -->
+	<!-- = B U I L D- D E F I N I T I O N ===================================== -->
+	<!-- ====================================================================== -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>io.digitaljourney.omnichannel.plugins</groupId>
+				<artifactId>tiles-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<tiles>
+						<tile>${tile.telco.deploy.k8s.delivery.coordinates}</tile>
+						<tile>${tile.telco.plugins.deploy.k8s.delivery.coordinates}</tile>
+						<tile>${tile.platform.plugins.deploy.k8s.delivery.coordinates}</tile>
+						<tile>${tile.platform.deploy.k8s.delivery.coordinates}</tile>
+						<tile>${tile.helmrelease.coordinates}</tile>
+					</tiles>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- ====================================================================== -->
+	<!-- = P R O F I L E S ==================================================== -->
+	<!-- ====================================================================== -->
+
+	<profiles>
+		<profile>
+			<id>autoInstallHelmPackage</id>
+		</profile>
+
+		<profile>
+			<id>autoUpdateHelmPackage</id>
+		</profile>
+	</profiles>
+</project>

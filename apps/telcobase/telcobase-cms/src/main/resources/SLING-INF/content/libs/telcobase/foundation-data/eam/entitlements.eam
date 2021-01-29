@@ -1,0 +1,242 @@
+[
+    {
+        "id": "CUSTOMER_INFO:SHOW_ACTION_BUTTONS",
+		"roles": ["Administrator", "Demo", "Journey_User"]
+    },
+	{
+		"id": "UFE_CTI",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_INLINE",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "OPEN_PRODUCTS",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "OPEN_ADMIN",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "OPEN_DASHBOARD",
+		"roles": ["Administrator", "RM", "Operation_Console","Journey_User"]
+	},
+	{
+		"id": "OPEN_JOURNEY",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "OPEN_BUSINESS",
+		"roles": ["Administrator", "RM" ,"Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "FES_WGT_WORK_QUEUE:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_User"]
+	},
+	{
+		"id": "FES_WGT_WORK_QUEUE:DISPATCH",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_User"]
+	},
+	{
+		"id": "UFE_GLOBAL_SEARCH:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_PRIVATE_MODE:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_CHANGE_STATUS:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_USER_SETTINGS:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_GENERIC_EXTENSION:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "INLINE_MANAGER:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_BREADCRUMBS",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},	
+	{
+		"id": "UFE_DASHBOARD_WIDGETS:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console","Journey_User"]
+	},
+	{
+		"id": "UFE_DASHBOARD_WIDGETS_EDIT_MODE:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_DASHBOARD_WIDGETS_ADD_WIDGET:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_CONTEXT_LEVEL_SWITCH:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_360:SHOW",
+		"roles": ["Administrator", "RM","Journey_User"]
+	},
+	{
+		"id": "UFE_360_TIMER:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_360_TOOLBAR:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_FOOTER:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_INTERACTIONS_BAR:SHOW",
+		"roles": ["Administrator", "RM", "Journey_User"]
+	},
+	{
+		"id": "UFE_NOTIFICATIONS:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_NOTIFICATIONS_MESSAGES:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_NOTIFICATIONS_SEMAPHORES:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console","Journey_User"]
+	},
+	{
+		"id": "UFE_CONTEXTUAL_NOTIFICATIONS:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_NON_CONTEXTUAL_NOTIFICATIONS:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id" : "UFE_NOTIFICATIONS_CENTER:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_MENU:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_MENU_FAVOURITES:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_TASK_SWITCHER:SHOW",
+		"roles": ["Administrator", "RM", "Operation_Console", "Journey_Designer"]
+	},
+	{
+		"id": "UFE_USER_SETTINGS_DIRECTION:SHOW",
+		"roles": ["Administrator", "Journey_User"]
+	},
+	{
+		"id": "UFE_USER_SETTINGS_THEME_TYPE:SHOW",
+		"roles": ["Administrator", "Journey_User"]
+	},
+	{
+		"id": "UFE_MENU_JOURNEY_LIST:SHOW",
+		"roles": ["Administrator","Journey_User"]
+	},
+	{
+    	"id": "SETTINGS_GENERAL_TAB",
+		"roles": ["Administrator","Journey_User"]
+	},
+    {
+    	"id": "SETTINGS_USER_INFO",
+        "roles": ["Administrator","Journey_User"]
+	},
+	{
+		"id": "SETTINGS_EDIT_USER_INFO",
+		"roles": ["Administrator","Journey_User"]
+	},
+	{
+		"id": "SETTINGS_CHANGE_LANGUAGE",
+		"roles": ["Administrator","Journey_User"]
+	},
+	{
+		"id": "SETTINGS_CHANGE_PASSWORD_TAB",
+		"roles": ["Administrator","Journey_User"]
+	},
+	{
+		"id": "SETTINGS_ACTIVE_SESSIONS_TAB",
+		"roles": ["Administrator","Journey_User"]
+	},
+	{
+		"id": "SETTINGS_RESET_PROFILE_TAB",
+		"roles": ["Administrator","Journey_User"]
+	},	
+	{
+		"id": "JD_CREATE:JOURNEY",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_CREATE:MAJOR",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_CREATE:MINOR",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_IMPORT:CREATE",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_IMPORT:REPLACE",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_EXPORT:BLUEPRINT",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_EXPORT:PDF",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_PUBLISH",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_UNPUBLISH",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_DELETE",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_EDIT",
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_READ", 
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_VIEW:JOURNEYMAP", 
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_VIEW:STATEMODEL", 
+		"roles": ["Journey_Designer", "Administrator"]
+	},
+	{
+		"id": "JD_VIEW:STATEWORKFLOW",
+		"roles": ["Journey_Designer", "Administrator"]
+	}
+]

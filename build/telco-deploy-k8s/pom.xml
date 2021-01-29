@@ -1,0 +1,330 @@
+<!--
+  #%L
+  Deploy
+  %%
+  Copyright (C) 2018 DIGITAL JOURNEY
+  %%
+  All rights reserved. This software is protected under several
+  Laws in various countries. All content, layout, design of this document are the
+  intellectual property of DIGITAL JOURNEY, Novabase Business Solutions S.A. 
+  and its licensors. The disclosure,copying, adaptation, citation, transcription, 
+  translation, modification, decompilation, reverse engineering, derivatives, 
+  integration, development and/or any other form of total or partial use of the 
+  content of this document and/or accessible through or via the contents, by any 
+  possible means without the respective authorization or licensing by the owner of 
+  the intellectual property rights is prohibited, the offenders being subject to civil 
+  and/or criminal prosecution and liability. The user or licensee of all or part of this 
+  document by any means may only use the document under the terms and conditions agreed
+  upon with the owner of the intellectual property rights, and for the purposes
+  justifying the granting of the license or authorization, without which the
+  unauthorized use may subject the offenders to civil or criminal prosecution
+  under applicable Laws.
+  #L%
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ====================================================================== -->
+    <!-- = P A R E N T- P R O J E C T- D E S C R I P T I O N ================== -->
+    <!-- ====================================================================== -->
+
+    <parent>
+		<groupId>com.celfocus.omnichannel.telco.plugins.deploy.k8s</groupId>
+		<artifactId>telco-plugins-deploy-k8s</artifactId>
+		<version>2.0.9</version>
+	</parent>
+
+    <!-- ====================================================================== -->
+    <!-- = P R O J E C T- D E S C R I P T I O N =============================== -->
+    <!-- ====================================================================== -->
+
+    <groupId>com.celfocus.omnichannel.telco.deploy.k8s</groupId>
+    <artifactId>telco-deploy-k8s</artifactId>
+    <version>2.0.7-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Deploy</name>
+    <description>Deploy</description>
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- ====================================================================== -->
+    <!-- = P R O J E C T- P R O P E R T I E S ================================= -->
+    <!-- ====================================================================== -->
+
+    <properties>
+        <!-- SCM MANAGEMENT -->
+        <scm.path>celfocus/omni-telco.git</scm.path>
+
+        <!-- GITFLOW MANAGEMENT -->
+        <gitflow.versionTagPrefix>version/deploy/k8s</gitflow.versionTagPrefix>
+
+        <!-- DEPLOY MANAGEMENT -->
+        <deploy.group>omni-telco</deploy.group>
+
+        <!-- VERSION MANAGEMENT -->
+        <distro.version>2.0.7</distro.version>                                                        
+        <distro.tag.version>2.0.7</distro.tag.version>                                                        
+
+        <!-- TILE MANAGEMENT -->
+        <tile.telco.deploy.k8s.delivery.coordinates>
+            com.celfocus.omnichannel.telco.deploy.k8s.delivery:k8s-deliverytile:${com.celfocus.omnichannel.telco.deploy.k8s.version}
+        </tile.telco.deploy.k8s.delivery.coordinates>
+
+        <!-- Chart -->
+
+        <!-- Secrets -->
+        <k8s.secret.container.email>omnichannel.development@celfocus.com</k8s.secret.container.email>
+        <!-- # Core -->
+        <k8s.core.groupId>com.celfocus.omnichannel.telco.distro.core</k8s.core.groupId>
+
+        <!-- # CMS -->
+        <k8s.cms.groupId>com.celfocus.omnichannel.telco.distro.cms</k8s.cms.groupId>
+    </properties>
+
+    <!-- ====================================================================== -->
+    <!-- = P R O F I L E S ==================================================== -->
+    <!-- ====================================================================== -->
+
+    <profiles>
+        <profile>
+            <id>tst</id>
+
+            <!--############################-->
+            <!--### DELIVERY HELMPACKAGE ###-->
+            <!--############################-->
+
+            <properties>
+
+                <k8s.secret.container.password>${settings.servers.platform.registry.user.password}</k8s.secret.container.password>
+
+                <k8s.productcatalog.enable>false</k8s.productcatalog.enable>
+                <k8s.persistence.nfs.enabled>false</k8s.persistence.nfs.enabled>
+                <k8s.persistence.azureFile.enabled>false</k8s.persistence.azureFile.enabled>
+
+                <k8s.cave.image.repository>digitaljourney.azurecr.io/cave</k8s.cave.image.repository>
+                <k8s.cave.secret.initcontainer.email>omnichannel@celfocus.com</k8s.cave.secret.initcontainer.email>
+
+                <k8s.productcatalog.enable>true</k8s.productcatalog.enable>
+                <k8s.productcatalog.database.name>catdev</k8s.productcatalog.database.name>
+                <k8s.productcatalog.database.host>client-delivery-postgres</k8s.productcatalog.database.host>
+                <k8s.productcatalog.database.port>3500</k8s.productcatalog.database.port>
+                <k8s.productcatalog.database.credential.secret>credential-delivery-postgres</k8s.productcatalog.database.credential.secret>
+                <k8s.productcatalog.persistence.size>16Gi</k8s.productcatalog.persistence.size>
+                <k8s.productcatalog.database.password>catdev#2018</k8s.productcatalog.database.password>
+                <k8s.productcatalog.app.statefull.replicaCount>1</k8s.productcatalog.app.statefull.replicaCount>
+
+
+                <!-- updated nginx-ingress -->
+                <k8s.nginx-ingress.deploy>false</k8s.nginx-ingress.deploy>
+                <k8s.nginx-ingress.version>0.28.3</k8s.nginx-ingress.version>
+                <k8s.nginx-ingress.rbac.create>true</k8s.nginx-ingress.rbac.create>
+                <k8s.nginx-ingress.serviceAccount.create>true</k8s.nginx-ingress.serviceAccount.create>
+                <k8s.nginx-ingress.serviceAccount.name>nginx-ingress</k8s.nginx-ingress.serviceAccount.name>
+                <k8s.nginx-ingress.controller.serverTokens>false</k8s.nginx-ingress.controller.serverTokens>
+
+                <!-- updated cert-manager -->
+                <!-- don't use 0.5.0 until we figure out how to handle the failing webhook ca image-->
+                <k8s.cert-manager.deploy>false</k8s.cert-manager.deploy>
+                <k8s.cert-manager.version>0.4.1</k8s.cert-manager.version>
+                <k8s.cert-manager.downloadUrl>
+                    https://kubernetes-charts.storage.googleapis.com/cert-manager-v${k8s.cert-manager.version}.tgz
+                </k8s.cert-manager.downloadUrl>
+                <k8s.cert-manager.rbac.create>true</k8s.cert-manager.rbac.create>
+                <k8s.cert-manager.serviceAccount.create>true</k8s.cert-manager.serviceAccount.create>
+                <k8s.cert-manager.serviceAccount.name>cert-manager</k8s.cert-manager.serviceAccount.name>
+                <!-- App -->
+
+                <!-- # Postgres -->
+                <k8s.postgres.app.replicaCount>1</k8s.postgres.app.replicaCount>
+
+                <!-- # OrientDB -->
+                <k8s.orientdb.app.replicaCount>1</k8s.orientdb.app.replicaCount>
+
+                <!-- # Kibana -->
+                <k8s.kibana.service.httpExternalPort>5601</k8s.kibana.service.httpExternalPort>
+                <k8s.kibana.service.httpInternalPort>5601</k8s.kibana.service.httpInternalPort>
+                <k8s.kibana.secret.container.name>digitaljourney.azurecr.io</k8s.kibana.secret.container.name>
+                <k8s.kibana.app.statefull.replicaCount>0</k8s.kibana.app.statefull.replicaCount>
+                <k8s.kibana.app.deployment.replicaCount>1</k8s.kibana.app.deployment.replicaCount>
+                <k8s.kibana.conf.elasticsearch.username/>
+                <k8s.kibana.conf.elasticsearch.password/>
+                <k8s.kibana.secret.credential.adminUser>admin</k8s.kibana.secret.credential.adminUser>
+                <k8s.kibana.secret.credential.adminPassword>admin</k8s.kibana.secret.credential.adminPassword>
+                <k8s.kibana.conf.stateless.minMem>2G</k8s.kibana.conf.stateless.minMem>
+                <k8s.kibana.conf.stateless.maxMem>2G</k8s.kibana.conf.stateless.maxMem>
+                <k8s.kibana.conf.stateless.masterNode>true</k8s.kibana.conf.stateless.masterNode>
+                <k8s.kibana.conf.stateless.dataNode>true</k8s.kibana.conf.stateless.dataNode>
+                <k8s.kibana.conf.stateless.ingestNode>true</k8s.kibana.conf.stateless.ingestNode>
+                <k8s.kibana.service.httpInternalPort></k8s.kibana.service.httpInternalPort>
+
+                <!-- # Elasticsearch -->
+
+                <!-- ## Generic -->
+                <k8s.elasticsearch.generic.statefull.replicaCount>1</k8s.elasticsearch.generic.statefull.replicaCount>
+
+                <!-- ## Master -->
+                <k8s.elasticsearch.master.app.statefull.replicaCount>0</k8s.elasticsearch.master.app.statefull.replicaCount>
+
+                <!-- ## Data -->
+                <k8s.elasticsearch.data.app.statefull.replicaCount>0</k8s.elasticsearch.data.app.statefull.replicaCount>
+
+                <!-- # Zookeeper -->
+                <k8s.zookeeper.app.replicaCount>1</k8s.zookeeper.app.replicaCount>
+
+                <!-- # Cave -->
+                <k8s.cave.app.replicaCount>1</k8s.cave.app.replicaCount>
+                <k8s.cave.ingress.proxyNextUpstream/>
+                <k8s.cave.ingress.forceHTTPSResponse>true</k8s.cave.ingress.forceHTTPSResponse>
+
+                <!-- # Core -->
+                <k8s.core.image.tag>${distro.tag.version}</k8s.core.image.tag>
+                <k8s.core.app.statefull.replicaCount>1</k8s.core.app.statefull.replicaCount>
+                <k8s.core.service.readinessProbe.enabled>true</k8s.core.service.readinessProbe.enabled>
+                <k8s.core.service.livenessProbe.enabled>true</k8s.core.service.livenessProbe.enabled>
+                <k8s.core.service.livenessProbe.initialDelaySeconds>300
+                </k8s.core.service.livenessProbe.initialDelaySeconds>
+                <k8s.core.ingress.proxyNextUpstream>error timeout invalid_header http_502 http_503 http_504
+                    non_idempotent
+                </k8s.core.ingress.proxyNextUpstream>
+                <k8s.core.ingress.forceHTTPSResponse>true</k8s.core.ingress.forceHTTPSResponse>
+                <k8s.core.resources.enabled>false</k8s.core.resources.enabled>
+                <k8s.core.resources.limits.cpu>2000m</k8s.core.resources.limits.cpu>
+                <k8s.core.resources.limits.memory>3072Mi</k8s.core.resources.limits.memory>
+                <k8s.core.resources.requests.cpu>1000m</k8s.core.resources.requests.cpu>
+                <k8s.core.resources.requests.memory>2048Mi</k8s.core.resources.requests.memory>
+
+                <k8s.service.httpProtocol>http</k8s.service.httpProtocol>
+
+                <!-- # CMS -->
+                <k8s.cms.image.tag>${distro.tag.version}</k8s.cms.image.tag>
+
+                <!-- ## Author -->
+                <k8s.cms.author.app.statefull.replicaCount>0</k8s.cms.author.app.statefull.replicaCount>
+                <k8s.cms.author.ingress.maxBodySize>10m</k8s.cms.author.ingress.maxBodySize>
+                <k8s.cms.author.service.readinessProbe.enabled>true</k8s.cms.author.service.readinessProbe.enabled>
+                <k8s.cms.author.service.livenessProbe.enabled>true</k8s.cms.author.service.livenessProbe.enabled>
+                <k8s.cms.author.service.livenessProbe.initialDelaySeconds>300
+                </k8s.cms.author.service.livenessProbe.initialDelaySeconds>
+                <k8s.cms.author.ingress.proxyNextUpstream>error timeout invalid_header http_502 http_503 http_504
+                    non_idempotent
+                </k8s.cms.author.ingress.proxyNextUpstream>
+                <k8s.cms.author.ingress.forceHTTPSResponse>true</k8s.cms.author.ingress.forceHTTPSResponse>
+                <k8s.cms.author.resources.enabled>false</k8s.cms.author.resources.enabled>
+                <k8s.cms.author.resources.limits.cpu>2000m</k8s.cms.author.resources.limits.cpu>
+                <k8s.cms.author.resources.limits.memory>3072Mi</k8s.cms.author.resources.limits.memory>
+                <k8s.cms.author.resources.requests.cpu>1000m</k8s.cms.author.resources.requests.cpu>
+                <k8s.cms.author.resources.requests.memory>2048Mi</k8s.cms.author.resources.requests.memory>
+
+                <!-- ## Publish -->
+                <k8s.cms.publish.app.statefull.replicaCount>0</k8s.cms.publish.app.statefull.replicaCount>
+                <k8s.cms.publish.ingress.maxBodySize>10m</k8s.cms.publish.ingress.maxBodySize>
+                <k8s.cms.publish.service.readinessProbe.enabled>true</k8s.cms.publish.service.readinessProbe.enabled>
+                <k8s.cms.publish.service.livenessProbe.enabled>true</k8s.cms.publish.service.livenessProbe.enabled>
+                <k8s.cms.publish.service.livenessProbe.initialDelaySeconds>300
+                </k8s.cms.publish.service.livenessProbe.initialDelaySeconds>
+                <k8s.cms.publish.ingress.proxyNextUpstream>error timeout invalid_header http_502 http_503 http_504
+                    non_idempotent
+                </k8s.cms.publish.ingress.proxyNextUpstream>
+                <k8s.cms.publish.ingress.forceHTTPSResponse>true</k8s.cms.publish.ingress.forceHTTPSResponse>
+                <k8s.cms.publish.resources.enabled>false</k8s.cms.publish.resources.enabled>
+                <k8s.cms.publish.resources.limits.cpu>2000m</k8s.cms.publish.resources.limits.cpu>
+                <k8s.cms.publish.resources.limits.memory>3072Mi</k8s.cms.publish.resources.limits.memory>
+                <k8s.cms.publish.resources.requests.cpu>1000m</k8s.cms.publish.resources.requests.cpu>
+                <k8s.cms.publish.resources.requests.memory>2048Mi</k8s.cms.publish.resources.requests.memory>
+
+                <!-- ## Generic -->
+                <k8s.cms.generic.app.statefull.replicaCount>1</k8s.cms.generic.app.statefull.replicaCount>
+                <k8s.cms.generic.ingress.maxBodySize>10m</k8s.cms.generic.ingress.maxBodySize>
+                <k8s.cms.generic.service.readinessProbe.enabled>true</k8s.cms.generic.service.readinessProbe.enabled>
+                <k8s.cms.generic.service.livenessProbe.enabled>true</k8s.cms.generic.service.livenessProbe.enabled>
+                <k8s.cms.generic.service.livenessProbe.initialDelaySeconds>300
+                </k8s.cms.generic.service.livenessProbe.initialDelaySeconds>
+                <k8s.cms.generic.ingress.proxyNextUpstream>error timeout invalid_header http_502 http_503 http_504
+                    non_idempotent
+                </k8s.cms.generic.ingress.proxyNextUpstream>
+                <k8s.cms.generic.ingress.forceHTTPSResponse>true</k8s.cms.generic.ingress.forceHTTPSResponse>
+                <k8s.cms.generic.resources.enabled>false</k8s.cms.generic.resources.enabled>
+                <k8s.cms.generic.resources.limits.cpu>2000m</k8s.cms.generic.resources.limits.cpu>
+                <k8s.cms.generic.resources.limits.memory>3072Mi</k8s.cms.generic.resources.limits.memory>
+                <k8s.cms.generic.resources.requests.cpu>1000m</k8s.cms.generic.resources.requests.cpu>
+                <k8s.cms.generic.resources.requests.memory>2048Mi</k8s.cms.generic.resources.requests.memory>
+
+
+
+                <k8s.kibana.app.stateless.replicaCount>1</k8s.kibana.app.stateless.replicaCount>
+                <k8s.kibana.conf.securityContext.fsGroup>1000</k8s.kibana.conf.securityContext.fsGroup>
+                <k8s.kibana.conf.securityContext.runAsGroup></k8s.kibana.conf.securityContext.runAsGroup>
+                <k8s.kibana.conf.securityContext.runAsUser></k8s.kibana.conf.securityContext.runAsUser>
+                <!--<k8s.kibana.service.httpExternalPort>5601</k8s.kibana.service.httpExternalPort>-->
+
+                <k8s.kibana.service.httpInternalPort>5601</k8s.kibana.service.httpInternalPort>
+                <k8s.kibana.secret.container.user>${settings.servers.platform.registry.user.username}
+                </k8s.kibana.secret.container.user>
+                <k8s.kibana.secret.container.password>${settings.servers.platform.registry.user.password}
+                </k8s.kibana.secret.container.password>
+
+                <k8s.cave.secret.container.name>digitaljourney.azurecr.io</k8s.cave.secret.container.name>
+                <k8s.cave.secret.container.user>${settings.servers.platform.registry.user.username}
+                </k8s.cave.secret.container.user>
+                <k8s.cave.secret.container.password>${settings.servers.platform.registry.user.password}
+                </k8s.cave.secret.container.password>
+                <k8s.cave.secret.initcontainer.name>digitaljourney.azurecr.io</k8s.cave.secret.initcontainer.name>
+                <k8s.cave.secret.initcontainer.user>${settings.servers.platform.registry.user.username}
+                </k8s.cave.secret.initcontainer.user>
+                <k8s.cave.secret.initcontainer.password>${settings.servers.platform.registry.user.password}
+                </k8s.cave.secret.initcontainer.password>
+
+                <!--#####################-->
+                <!--### DELIVERY TILE ###-->
+                <!--#####################-->
+                <!-- # UAM -->
+                <k8s.postgres.db.uam.owner.user>${settings.servers.telco.delivery.postgres.uam.owner.username}
+                </k8s.postgres.db.uam.owner.user>
+                <k8s.postgres.db.uam.owner.password>${settings.servers.telco.delivery.postgres.uam.owner.password}
+                </k8s.postgres.db.uam.owner.password>
+
+                <!-- # Rules Engine -->
+                <k8s.postgres.db.rulesengine.owner.user>
+                    ${settings.servers.telco.delivery.postgres.rulesengine.owner.username}
+                </k8s.postgres.db.rulesengine.owner.user>
+                <k8s.postgres.db.rulesengine.owner.password>
+                    ${settings.servers.telco.delivery.postgres.rulesengine.owner.password}
+                </k8s.postgres.db.rulesengine.owner.password>
+
+                <!-- # Blob -->
+                <k8s.postgres.db.blob.owner.user>${settings.servers.telco.delivery.postgres.blob.owner.username}
+                </k8s.postgres.db.blob.owner.user>
+                <k8s.postgres.db.blob.owner.password>
+                    ${settings.servers.telco.delivery.postgres.blob.owner.password}
+                </k8s.postgres.db.blob.owner.password>
+
+                <!-- # Decision Trees -->
+                <k8s.postgres.db.decisiontrees.owner.user>
+                    ${settings.servers.telco.delivery.postgres.decisiontrees.owner.username}
+                </k8s.postgres.db.decisiontrees.owner.user>
+                <k8s.postgres.db.decisiontrees.owner.password>
+                    ${settings.servers.telco.delivery.postgres.decisiontrees.owner.password}
+                </k8s.postgres.db.decisiontrees.owner.password>
+
+                <!-- # Process Continuity -->
+                <k8s.orientdb.db.processcontinuity.owner.user>
+                    ${settings.servers.telco.delivery.orientdb.processcontinuity.owner.username}
+                </k8s.orientdb.db.processcontinuity.owner.user>
+                <k8s.orientdb.db.processcontinuity.owner.password>
+                    ${settings.servers.telco.delivery.orientdb.processcontinuity.owner.password}
+                </k8s.orientdb.db.processcontinuity.owner.password>
+
+            </properties>
+
+        </profile>
+    </profiles>
+
+    <!-- ====================================================================== -->
+    <!-- = P R O J E C T- M O D U L E S ======================================= -->
+    <!-- ====================================================================== -->
+
+    <modules>
+        <module>../../deploy/k8s/k8s-delivery</module>
+    </modules>
+</project>

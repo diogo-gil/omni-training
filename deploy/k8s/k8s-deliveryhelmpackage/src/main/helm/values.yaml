@@ -1,0 +1,781 @@
+name: ${k8s.name}
+component: ${k8s.component}
+provider: ${k8s.provider}
+# Nginx Ingress
+nginx-ingress:
+  rbac:
+    create: ${k8s.nginx-ingress.rbac.create}
+  serviceAccount:
+    create: ${k8s.nginx-ingress.serviceAccount.create}
+    name: ${k8s.nginx-ingress.serviceAccount.name}
+  deploy: ${k8s.nginx-ingress.deploy}
+  controller:
+    serverTokens: ${k8s.nginx-ingress.controller.serverTokens}
+# Cert Manager
+cert-manager:
+  deploy: ${k8s.cert-manager.deploy}
+  rbac:
+    create: ${k8s.cert-manager.rbac.create}
+  serviceAccount:
+    create: ${k8s.cert-manager.serviceAccount.create}
+    name: ${k8s.cert-manager.serviceAccount.name}
+  ingressShim:
+    extraArgs: []
+# Charts
+postgres:
+  app:
+    replicaCount: ${k8s.postgres.app.replicaCount}
+    antiAffinity: ${k8s.postgres.app.antiAffinity}
+  image:
+    tag: "${k8s.postgres.image.tag}"
+    pullPolicy: ${k8s.postgres.image.pullPolicy}
+  conf:
+    timezone: ${k8s.postgres.conf.timezone}
+    listenAddresses: "${k8s.postgres.conf.listenAddresses}"
+    maxConnections: ${k8s.postgres.conf.maxConnections}
+  service:
+    externalPort: ${k8s.postgres.service.externalPort}
+    readinessProbe:
+      enabled: ${k8s.postgres.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.postgres.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.postgres.secret.credential.adminUser}
+      adminPassword: ${k8s.postgres.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.postgres.persistence.storageClass}
+    size: ${k8s.postgres.persistence.size}
+orientdb:
+  ingress:
+    enabled: ${k8s.orientdb.ingress.enabled}
+    rewriteTarget: ${k8s.orientdb.ingress.rewriteTarget}
+    maxBodySize: ${k8s.orientdb.ingress.maxBodySize}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.orientdb.ingress.paths.root}
+    altPathsEnabled: ${k8s.orientdb.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    replicaCount: ${k8s.orientdb.app.replicaCount}
+    antiAffinity: ${k8s.orientdb.app.antiAffinity}
+  image:
+    tag: "${k8s.orientdb.image.tag}"
+    pullPolicy: ${k8s.orientdb.image.pullPolicy}
+  conf:
+    timezone: ${k8s.orientdb.conf.timezone}
+    minMem: ${k8s.orientdb.conf.minMem}
+    maxMem: ${k8s.orientdb.conf.maxMem}
+  service:
+    binaryExternalPort: ${k8s.orientdb.service.binaryExternalPort}
+    distributedExternalPort: ${k8s.orientdb.service.distributedExternalPort}
+    httpExternalPort: ${k8s.orientdb.service.httpExternalPort}
+    readinessProbe:
+      enabled: ${k8s.orientdb.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.orientdb.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.orientdb.secret.credential.adminUser}
+      adminPassword: ${k8s.orientdb.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.orientdb.persistence.storageClass}
+    size: ${k8s.orientdb.persistence.size}
+kibana:
+  ingress:
+    enabled: ${k8s.kibana.ingress.enabled}
+    rewriteTarget: ${k8s.kibana.ingress.rewriteTarget}
+    maxBodySize: ${k8s.kibana.ingress.maxBodySize}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.kibana.ingress.paths.root}
+    altPathsEnabled: ${k8s.kibana.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    statefull:
+      replicaCount: ${k8s.kibana.app.statefull.replicaCount}
+      antiAffinity: ${k8s.kibana.app.statefull.antiAffinity}
+  image:
+    tag: "${k8s.kibana.image.tag}"
+    pullPolicy: ${k8s.kibana.image.pullPolicy}
+  conf:
+    timezone: ${k8s.kibana.conf.timezone}
+    clusterName: ${k8s.kibana.conf.clusterName}
+    discoveryProvider: ${k8s.kibana.conf.discoveryProvider}
+    minimumMasterNodes: ${k8s.kibana.conf.minimumMasterNodes}
+    expectedMasterNodes: ${k8s.kibana.conf.expectedMasterNodes}
+    expectedDataNodes: ${k8s.kibana.conf.expectedDataNodes}
+    recoverAfterTime: ${k8s.kibana.conf.recoverAfterTime}
+    recoverAfterMasterNodes: ${k8s.kibana.conf.recoverAfterMasterNodes}
+    recoverAfterDataNodes: ${k8s.kibana.conf.recoverAfterDataNodes}
+    elasticsearch:
+      hostname: ${k8s.kibana.conf.elasticsearch.hostname}
+      username: ${k8s.kibana.conf.elasticsearch.username}
+      password: ${k8s.kibana.conf.elasticsearch.password}
+    statefull:
+      minMem: ${k8s.kibana.conf.statefull.minMem}
+      maxMem: ${k8s.kibana.conf.statefull.maxMem}
+      masterNode: ${k8s.kibana.conf.statefull.masterNode}
+      dataNode: ${k8s.kibana.conf.statefull.dataNode}
+      ingestNode: ${k8s.kibana.conf.statefull.ingestNode}
+    stateless:
+      minMem: ${k8s.kibana.conf.stateless.minMem}
+      maxMem: ${k8s.kibana.conf.stateless.maxMem}
+      masterNode: ${k8s.kibana.conf.stateless.masterNode}
+      dataNode: ${k8s.kibana.conf.stateless.dataNode}
+      ingestNode: ${k8s.kibana.conf.stateless.ingestNode}
+  service:
+    httpExternalPort: ${k8s.kibana.service.httpExternalPort}
+    readinessProbe:
+      enabled: ${k8s.kibana.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.kibana.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.kibana.secret.credential.adminUser}
+      adminPassword: ${k8s.kibana.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.kibana.persistence.storageClass}
+    size: ${k8s.kibana.persistence.size}
+elasticsearch-generic:
+  ingress:
+    enabled: ${k8s.elasticsearch.ingress.enabled}
+    rewriteTarget: ${k8s.elasticsearch.ingress.rewriteTarget}
+    maxBodySize: ${k8s.elasticsearch.ingress.maxBodySize}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.elasticsearch.ingress.paths.root}
+    altPathsEnabled: ${k8s.elasticsearch.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    statefull:
+      replicaCount: ${k8s.elasticsearch.generic.statefull.replicaCount}
+      antiAffinity: ${k8s.elasticsearch.generic.app.statefull.antiAffinity}
+  image:
+    tag: "${k8s.elasticsearch.image.tag}"
+    pullPolicy: ${k8s.elasticsearch.image.pullPolicy}
+  conf:
+    timezone: ${k8s.elasticsearch.conf.timezone}
+    clusterName: ${k8s.elasticsearch.conf.clusterName}
+    discoveryProvider: ${k8s.elasticsearch.conf.discoveryProvider}
+    minimumMasterNodes: ${k8s.elasticsearch.conf.minimumMasterNodes}
+    expectedMasterNodes: ${k8s.elasticsearch.conf.expectedMasterNodes}
+    expectedDataNodes: ${k8s.elasticsearch.conf.expectedDataNodes}
+    recoverAfterTime: ${k8s.elasticsearch.conf.recoverAfterTime}
+    recoverAfterMasterNodes: ${k8s.elasticsearch.conf.recoverAfterMasterNodes}
+    recoverAfterDataNodes: ${k8s.elasticsearch.conf.recoverAfterDataNodes}
+    statefull:
+      minMem: ${k8s.elasticsearch.generic.conf.statefull.minMem}
+      maxMem: ${k8s.elasticsearch.generic.conf.statefull.maxMem}
+      masterNode: ${k8s.elasticsearch.generic.conf.statefull.masterNode}
+      dataNode: ${k8s.elasticsearch.generic.conf.statefull.dataNode}
+      ingestNode: ${k8s.elasticsearch.generic.conf.statefull.ingestNode}
+  service:
+    transportExternalPort: ${k8s.elasticsearch.service.transportExternalPort}
+    httpExternalPort: ${k8s.elasticsearch.service.httpExternalPort}
+    readinessProbe:
+      enabled: ${k8s.elasticsearch.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.elasticsearch.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.elasticsearch.secret.credential.adminUser}
+      adminPassword: ${k8s.elasticsearch.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.elasticsearch.generic.persistence.storageClass}
+    size: ${k8s.elasticsearch.generic.persistence.size}
+elasticsearch-master:
+  ingress:
+    enabled: ${k8s.elasticsearch.ingress.enabled}
+    rewriteTarget: ${k8s.elasticsearch.ingress.rewriteTarget}
+    maxBodySize: ${k8s.elasticsearch.ingress.maxBodySize}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.elasticsearch.ingress.paths.root}
+    altPathsEnabled: ${k8s.elasticsearch.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    statefull:
+      replicaCount: ${k8s.elasticsearch.master.app.statefull.replicaCount}
+      antiAffinity: ${k8s.elasticsearch.master.app.statefull.antiAffinity}
+  image:
+    tag: "${k8s.elasticsearch.image.tag}"
+    pullPolicy: ${k8s.elasticsearch.image.pullPolicy}
+  conf:
+    timezone: ${k8s.elasticsearch.conf.timezone}
+    clusterName: ${k8s.elasticsearch.conf.clusterName}
+    discoveryProvider: ${k8s.elasticsearch.conf.discoveryProvider}
+    minimumMasterNodes: ${k8s.elasticsearch.conf.minimumMasterNodes}
+    expectedMasterNodes: ${k8s.elasticsearch.conf.expectedMasterNodes}
+    expectedDataNodes: ${k8s.elasticsearch.conf.expectedDataNodes}
+    recoverAfterTime: ${k8s.elasticsearch.conf.recoverAfterTime}
+    recoverAfterMasterNodes: ${k8s.elasticsearch.conf.recoverAfterMasterNodes}
+    recoverAfterDataNodes: ${k8s.elasticsearch.conf.recoverAfterDataNodes}
+    statefull:
+      minMem: ${k8s.elasticsearch.master.conf.statefull.minMem}
+      maxMem: ${k8s.elasticsearch.master.conf.statefull.maxMem}
+      masterNode: ${k8s.elasticsearch.master.conf.statefull.masterNode}
+      dataNode: ${k8s.elasticsearch.master.conf.statefull.dataNode}
+      ingestNode: ${k8s.elasticsearch.master.conf.statefull.ingestNode}
+  service:
+    transportExternalPort: ${k8s.elasticsearch.service.transportExternalPort}
+    httpExternalPort: ${k8s.elasticsearch.service.httpExternalPort}
+    readinessProbe:
+      enabled: ${k8s.elasticsearch.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.elasticsearch.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.elasticsearch.secret.credential.adminUser}
+      adminPassword: ${k8s.elasticsearch.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.elasticsearch.master.persistence.storageClass}
+    size: ${k8s.elasticsearch.master.persistence.size}
+elasticsearch-data:
+  ingress:
+    enabled: ${k8s.elasticsearch.ingress.enabled}
+    rewriteTarget: ${k8s.elasticsearch.ingress.rewriteTarget}
+    maxBodySize: ${k8s.elasticsearch.ingress.maxBodySize}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.elasticsearch.ingress.paths.root}
+    altPathsEnabled: ${k8s.elasticsearch.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    statefull:
+      replicaCount: ${k8s.elasticsearch.data.app.statefull.replicaCount}
+      antiAffinity: ${k8s.elasticsearch.data.app.statefull.antiAffinity}
+  image:
+    tag: "${k8s.elasticsearch.image.tag}"
+    pullPolicy: ${k8s.elasticsearch.image.pullPolicy}
+  conf:
+    timezone: ${k8s.elasticsearch.conf.timezone}
+    clusterName: ${k8s.elasticsearch.conf.clusterName}
+    discoveryProvider: ${k8s.elasticsearch.conf.discoveryProvider}
+    minimumMasterNodes: ${k8s.elasticsearch.conf.minimumMasterNodes}
+    expectedMasterNodes: ${k8s.elasticsearch.conf.expectedMasterNodes}
+    expectedDataNodes: ${k8s.elasticsearch.conf.expectedDataNodes}
+    recoverAfterTime: ${k8s.elasticsearch.conf.recoverAfterTime}
+    recoverAfterMasterNodes: ${k8s.elasticsearch.conf.recoverAfterMasterNodes}
+    recoverAfterDataNodes: ${k8s.elasticsearch.conf.recoverAfterDataNodes}
+    statefull:
+      minMem: ${k8s.elasticsearch.data.conf.statefull.minMem}
+      maxMem: ${k8s.elasticsearch.data.conf.statefull.maxMem}
+      masterNode: ${k8s.elasticsearch.data.conf.statefull.masterNode}
+      dataNode: ${k8s.elasticsearch.data.conf.statefull.dataNode}
+      ingestNode: ${k8s.elasticsearch.data.conf.statefull.ingestNode}
+  service:
+    transportExternalPort: ${k8s.elasticsearch.service.transportExternalPort}
+    httpExternalPort: ${k8s.elasticsearch.service.httpExternalPort}
+    readinessProbe:
+      enabled: ${k8s.elasticsearch.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.elasticsearch.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.elasticsearch.secret.credential.adminUser}
+      adminPassword: ${k8s.elasticsearch.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.elasticsearch.data.persistence.storageClass}
+    size: ${k8s.elasticsearch.data.persistence.size}
+zookeeper:
+  app:
+    stateful:
+      replicaCount: ${k8s.zookeeper.app.replicaCount}
+    antiAffinity: ${k8s.zookeeper.app.antiAffinity}
+  image:
+    tag: "${k8s.zookeeper.image.tag}"
+    pullPolicy: ${k8s.zookeeper.image.pullPolicy}
+  conf:
+    timezone: ${k8s.zookeeper.conf.timezone}
+    minMem: ${k8s.zookeeper.conf.minMem}
+    maxMem: ${k8s.zookeeper.conf.maxMem}
+    tickTime: ${k8s.zookeeper.conf.tickTime}
+    minSessionTimeout: ${k8s.zookeeper.conf.minSessionTimeout}
+    maxSessionTimeout: ${k8s.zookeeper.conf.maxSessionTimeout}
+    initLimit: ${k8s.zookeeper.conf.initLimit}
+    syncLimit: ${k8s.zookeeper.conf.syncLimit}
+    maxClientConnections: ${k8s.zookeeper.conf.maxClientConnections}
+    snapRetainCount: ${k8s.zookeeper.conf.snapRetainCount}
+    purgeInterval: ${k8s.zookeeper.conf.purgeInterval}
+    logLevel: ${k8s.zookeeper.conf.logLevel}
+  service:
+    clientExternalPort: ${k8s.zookeeper.service.clientExternalPort}
+    serverExternalPort: ${k8s.zookeeper.service.serverExternalPort}
+    electionExternalPort: ${k8s.zookeeper.service.electionExternalPort}
+    readinessProbe:
+      enabled: ${k8s.zookeeper.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.zookeeper.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.zookeeper.secret.credential.adminUser}
+      adminPassword: ${k8s.zookeeper.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.zookeeper.persistence.storageClass}
+    size: ${k8s.zookeeper.persistence.size}
+cave:
+  ingress:
+    enabled: ${k8s.cave.ingress.enabled}
+    rewriteTarget: ${k8s.cave.ingress.rewriteTarget}
+    maxBodySize: ${k8s.cave.ingress.maxBodySize}
+    proxyNextUpstream: ${k8s.cave.ingress.proxyNextUpstream}
+    forceHTTPSResponse: ${k8s.cave.ingress.forceHTTPSResponse}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.cave.ingress.paths.root}
+    altPathsEnabled: ${k8s.cave.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    replicaCount: ${k8s.cave.app.replicaCount}
+    antiAffinity: ${k8s.cave.app.antiAffinity}
+  image:
+    repository: "${k8s.cave.image.repository}"
+    tag: "${k8s.cave.image.tag}"
+    pullPolicy: ${k8s.cave.image.pullPolicy}
+  conf:
+    timezone: ${k8s.cave.conf.timezone}
+    minMem: ${k8s.cave.conf.minMem}
+    maxMem: ${k8s.cave.conf.maxMem}
+    cleanAll: ${k8s.cave.conf.cleanAll}
+    cleanCache: ${k8s.cave.conf.cleanCache}
+    mavenRealm: ${k8s.cave.conf.mavenRealm}
+    downloadRole: ${k8s.cave.conf.downloadRole}
+    uploadRole: ${k8s.cave.conf.uploadRole}
+    settings: ${k8s.cave.conf.settings}
+    useFallbackRepositories: ${k8s.cave.conf.useFallbackRepositories}
+    offline: ${k8s.cave.conf.offline}
+    poolSize: ${k8s.cave.conf.poolSize}
+    webconsole:
+      path: ${k8s.cave.conf.webconsole.path}
+  service:
+    httpExternalPort: ${k8s.cave.service.httpExternalPort}
+    sshExternalPort: ${k8s.cave.service.sshExternalPort}
+    rmiServerExternalPort: ${k8s.cave.service.rmiServerExternalPort}
+    rmiRegistryExternalPort: ${k8s.cave.service.rmiRegistryExternalPort}
+    readinessProbe:
+      enabled: ${k8s.cave.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.cave.service.livenessProbe.enabled}
+  secret:
+    container:
+      name: ${k8s.cave.secret.container.name}
+      user: ${k8s.cave.secret.container.user}
+      password: ${k8s.cave.secret.container.password}
+    initcontainer:
+      name: ${k8s.cave.secret.initcontainer.name}
+      user: ${k8s.cave.secret.initcontainer.user}
+      password: ${k8s.cave.secret.initcontainer.password}
+      email: ${k8s.cave.secret.initcontainer.email}
+    credential:
+      adminUser: ${k8s.cave.secret.credential.adminUser}
+      adminPassword: ${k8s.cave.secret.credential.adminPassword}
+  persistence:
+    storageClass: ${k8s.cave.persistence.storageClass}
+    size: ${k8s.cave.persistence.size}
+core:
+  ingress:
+    enabled: ${k8s.core.ingress.enabled}
+    rewriteTarget: ${k8s.core.ingress.rewriteTarget}
+    maxBodySize: ${k8s.core.ingress.maxBodySize}
+    proxyNextUpstream: ${k8s.core.ingress.proxyNextUpstream}
+    forceHTTPSResponse: ${k8s.core.ingress.forceHTTPSResponse}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.core.ingress.paths.root}
+    altPathsEnabled: ${k8s.core.ingress.altPathsEnabled}
+    altPaths: []
+  app:
+    stateless:
+      replicaCount: ${k8s.core.app.stateless.replicaCount}
+    statefull:
+      replicaCount: ${k8s.core.app.statefull.replicaCount}
+    antiAffinity: ${k8s.core.app.antiAffinity}
+  image:
+    tag: "${k8s.core.image.tag}"
+    pullPolicy: ${k8s.core.image.pullPolicy}
+  conf:
+    timezone: ${k8s.core.conf.timezone}
+    m2Profile: "${k8s.core.conf.m2Profile}"
+    m2Settings: "${k8s.core.conf.m2Settings}"
+    m2MirrorUrl: "${k8s.core.conf.m2MirrorUrl}"
+    m2MirrorMirrorOf: "${k8s.core.conf.m2MirrorMirrorOf}"
+    minMem: ${k8s.core.conf.minMem}
+    maxMem: ${k8s.core.conf.maxMem}
+    cleanAll: ${k8s.core.conf.cleanAll}
+    cleanCache: ${k8s.core.conf.cleanCache}
+    customOpts: "${k8s.core.conf.customOpts}"
+    webconsolePath: ${k8s.core.conf.webconsolePath}
+  init:
+    wait:
+      enabled: ${k8s.core.init.wait.enabled}
+      imagePullPolicy: ${k8s.core.init.wait.imagePullPolicy}
+      volumeName: ${k8s.core.init.wait.volumeName}
+      configMapName: ${k8s.core.init.wait.configMapName}
+      scriptName: ${k8s.core.init.wait.scriptName}
+      mountPath: ${k8s.core.init.wait.mountPath}
+  service:
+    httpExternalPort: ${k8s.core.service.httpExternalPort}
+    sshExternalPort: ${k8s.core.service.sshExternalPort}
+    httpProtocol:  ${k8s.service.httpProtocol}
+    rmiServerExternalPort: ${k8s.core.service.rmiServerExternalPort}
+    rmiRegistryExternalPort: ${k8s.core.service.rmiRegistryExternalPort}
+    readinessProbe:
+      enabled: ${k8s.core.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.core.service.livenessProbe.enabled}
+  secret:
+    credential:
+      name: digitaljourney.azurecr.io
+      adminUser: ${k8s.core.secret.credential.adminUser}
+      adminPassword: ${k8s.core.secret.credential.adminPassword}
+      m2User: ${k8s.core.secret.credential.m2User}
+      m2Password: ${k8s.core.secret.credential.m2Password}
+    initContainer:
+      name: digitaljourney.azurecr.io
+      user: ${settings.servers.digitaljourney.azurecr.io.username}
+      pass: ${settings.servers.digitaljourney.azurecr.io.password}
+  persistence:
+    storageClass: ${k8s.core.persistence.storageClass}
+    size: ${k8s.core.persistence.size}
+cms-author:
+  ingress:
+    enabled: ${k8s.cms.author.ingress.enabled}
+    rewriteTarget: ${k8s.cms.author.ingress.rewriteTarget}
+    maxBodySize: ${k8s.cms.author.ingress.maxBodySize}
+    proxyNextUpstream: ${k8s.cms.author.ingress.proxyNextUpstream}
+    forceHTTPSResponse: ${k8s.cms.author.ingress.forceHTTPSResponse}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.cms.author.ingress.paths.api}
+      - ${k8s.cms.author.ingress.paths.content}
+    altPathsEnabled: ${k8s.cms.author.ingress.altPathsEnabled}
+    altPaths:
+      - ${k8s.cms.author.ingress.altPaths.libs}
+      - ${k8s.cms.author.ingress.altPaths.system}
+  app:
+    stateless:
+      replicaCount: ${k8s.cms.author.app.stateless.replicaCount}
+    statefull:
+      replicaCount: ${k8s.cms.author.app.statefull.replicaCount}
+    antiAffinity: ${k8s.cms.author.app.antiAffinity}
+  image:
+    tag: "${k8s.cms.image.tag}"
+    pullPolicy: ${k8s.cms.image.pullPolicy}
+  conf:
+    timezone: ${k8s.cms.conf.timezone}
+    m2Profile: "${k8s.cms.conf.m2Profile}"
+    m2Settings: "${k8s.cms.conf.m2Settings}"
+    m2MirrorUrl: "${k8s.cms.conf.m2MirrorUrl}"
+    m2MirrorMirrorOf: "${k8s.cms.conf.m2MirrorMirrorOf}"
+    minMem: ${k8s.cms.author.conf.minMem}
+    maxMem: ${k8s.cms.author.conf.maxMem}
+    cleanAll: ${k8s.cms.author.conf.cleanAll}
+    cleanCache: ${k8s.cms.author.conf.cleanCache}
+    customOpts: "${k8s.cms.author.conf.customOpts}"
+    webconsolePath: ${k8s.cms.author.conf.webconsolePath}
+  init:
+    wait:
+      enabled: ${k8s.cms.init.wait.enabled}
+      imagePullPolicy: ${k8s.cms.init.wait.imagePullPolicy}
+      volumeName: ${k8s.cms.init.wait.volumeName}
+      configMapName: ${k8s.cms.init.wait.configMapName}
+      scriptName: ${k8s.cms.init.wait.scriptName}
+      mountPath: ${k8s.cms.init.wait.mountPath}
+  service:
+    httpExternalPort: ${k8s.cms.author.service.httpExternalPort}
+    sshExternalPort: ${k8s.cms.author.service.sshExternalPort}
+    rmiServerExternalPort: ${k8s.cms.author.service.rmiServerExternalPort}
+    rmiRegistryExternalPort: ${k8s.cms.author.service.rmiRegistryExternalPort}
+    readinessProbe:
+      enabled: ${k8s.cms.author.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.cms.author.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.cms.author.secret.credential.adminUser}
+      adminPassword: ${k8s.cms.author.secret.credential.adminPassword}
+      m2User: ${k8s.cms.author.secret.credential.m2User}
+      m2Password: ${k8s.cms.author.secret.credential.m2Password}
+    initContainer:
+      name: digitaljourney.azurecr.io
+      user: ${settings.servers.digitaljourney.azurecr.io.username}
+      pass: ${settings.servers.digitaljourney.azurecr.io.password}
+  persistence:
+    storageClass: ${k8s.cms.author.persistence.storageClass}
+    size: ${k8s.cms.author.persistence.size}
+cms-publish:
+  ingress:
+    enabled: ${k8s.cms.publish.ingress.enabled}
+    rewriteTarget: ${k8s.cms.publish.ingress.rewriteTarget}
+    maxBodySize: ${k8s.cms.publish.ingress.maxBodySize}
+    proxyNextUpstream: ${k8s.cms.publish.ingress.proxyNextUpstream}
+    forceHTTPSResponse: ${k8s.cms.publish.ingress.forceHTTPSResponse}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.cms.publish.ingress.paths.api}
+      - ${k8s.cms.publish.ingress.paths.content}
+    altPathsEnabled: ${k8s.cms.publish.ingress.altPathsEnabled}
+    altPaths:
+      - ${k8s.cms.publish.ingress.altPaths.libs}
+      - ${k8s.cms.publish.ingress.altPaths.system}
+  app:
+    stateless:
+      replicaCount: ${k8s.cms.publish.app.stateless.replicaCount}
+    statefull:
+      replicaCount: ${k8s.cms.publish.app.statefull.replicaCount}
+    antiAffinity: ${k8s.cms.publish.app.antiAffinity}
+  image:
+    tag: "${k8s.cms.image.tag}"
+    pullPolicy: ${k8s.cms.image.pullPolicy}
+  conf:
+    timezone: ${k8s.cms.conf.timezone}
+    m2Profile: "${k8s.cms.conf.m2Profile}"
+    m2Settings: "${k8s.cms.conf.m2Settings}"
+    m2MirrorUrl: "${k8s.cms.conf.m2MirrorUrl}"
+    m2MirrorMirrorOf: "${k8s.cms.conf.m2MirrorMirrorOf}"
+    minMem: ${k8s.cms.publish.conf.minMem}
+    maxMem: ${k8s.cms.publish.conf.maxMem}
+    cleanAll: ${k8s.cms.publish.conf.cleanAll}
+    cleanCache: ${k8s.cms.publish.conf.cleanCache}
+    customOpts: "${k8s.cms.publish.conf.customOpts}"
+    webconsolePath: ${k8s.cms.publish.conf.webconsolePath}
+  init:
+    wait:
+      enabled: ${k8s.cms.init.wait.enabled}
+      imagePullPolicy: ${k8s.cms.init.wait.imagePullPolicy}
+      volumeName: ${k8s.cms.init.wait.volumeName}
+      configMapName: ${k8s.cms.init.wait.configMapName}
+      scriptName: ${k8s.cms.init.wait.scriptName}
+      mountPath: ${k8s.cms.init.wait.mountPath}
+  service:
+    httpExternalPort: ${k8s.cms.publish.service.httpExternalPort}
+    sshExternalPort: ${k8s.cms.publish.service.sshExternalPort}
+    rmiServerExternalPort: ${k8s.cms.publish.service.rmiServerExternalPort}
+    rmiRegistryExternalPort: ${k8s.cms.publish.service.rmiRegistryExternalPort}
+    readinessProbe:
+      enabled: ${k8s.cms.publish.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.cms.publish.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.cms.publish.secret.credential.adminUser}
+      adminPassword: ${k8s.cms.publish.secret.credential.adminPassword}
+      m2User: ${k8s.cms.publish.secret.credential.m2User}
+      m2Password: ${k8s.cms.publish.secret.credential.m2Password}
+    initContainer:
+      name: digitaljourney.azurecr.io
+      user: ${settings.servers.digitaljourney.azurecr.io.username}
+      pass: ${settings.servers.digitaljourney.azurecr.io.password}
+  persistence:
+    storageClass: ${k8s.cms.publish.persistence.storageClass}
+    size: ${k8s.cms.publish.persistence.size}
+cms-generic:
+  ingress:
+    enabled: ${k8s.cms.generic.ingress.enabled}
+    rewriteTarget: ${k8s.cms.generic.ingress.rewriteTarget}
+    maxBodySize: ${k8s.cms.generic.ingress.maxBodySize}
+    proxyNextUpstream: ${k8s.cms.generic.ingress.proxyNextUpstream}
+    forceHTTPSResponse: ${k8s.cms.generic.ingress.forceHTTPSResponse}
+    hosts:
+      - ${k8s.ingress.host}
+    tls:
+      enabled: ${k8s.ingress.tls.enabled}
+      issuer: ${k8s.ingress.tls.issuer}
+      secretName: ${k8s.ingress.tls.secretName}
+    paths:
+      - ${k8s.cms.generic.ingress.paths.api}
+      - ${k8s.cms.generic.ingress.paths.content}
+    altPathsEnabled: ${k8s.cms.generic.ingress.altPathsEnabled}
+    altPaths:
+      - ${k8s.cms.generic.ingress.altPaths.libs}
+      - ${k8s.cms.generic.ingress.altPaths.system}
+  app:
+    stateless:
+      replicaCount: ${k8s.cms.generic.app.stateless.replicaCount}
+    statefull:
+      replicaCount: ${k8s.cms.generic.app.statefull.replicaCount}
+    antiAffinity: ${k8s.cms.generic.app.antiAffinity}
+  image:
+    tag: "${k8s.cms.image.tag}"
+    pullPolicy: ${k8s.cms.image.pullPolicy}
+  conf:
+    timezone: ${k8s.cms.conf.timezone}
+    m2Profile: "${k8s.cms.conf.m2Profile}"
+    m2Settings: "${k8s.cms.conf.m2Settings}"
+    m2MirrorUrl: "${k8s.cms.conf.m2MirrorUrl}"
+    m2MirrorMirrorOf: "${k8s.cms.conf.m2MirrorMirrorOf}"
+    minMem: ${k8s.cms.generic.conf.minMem}
+    maxMem: ${k8s.cms.generic.conf.maxMem}
+    cleanAll: ${k8s.cms.generic.conf.cleanAll}
+    cleanCache: ${k8s.cms.generic.conf.cleanCache}
+    customOpts: "${k8s.cms.generic.conf.customOpts}"
+    webconsolePath: ${k8s.cms.generic.conf.webconsolePath}
+  init:
+    wait:
+      enabled: ${k8s.cms.init.wait.enabled}
+      imagePullPolicy: ${k8s.cms.init.wait.imagePullPolicy}
+      volumeName: ${k8s.cms.init.wait.volumeName}
+      configMapName: ${k8s.cms.init.wait.configMapName}
+      scriptName: ${k8s.cms.init.wait.scriptName}
+      mountPath: ${k8s.cms.init.wait.mountPath}
+  service:
+    httpExternalPort: ${k8s.cms.generic.service.httpExternalPort}
+    sshExternalPort: ${k8s.cms.generic.service.sshExternalPort}
+    httpProtocol:  ${k8s.service.httpProtocol}
+    rmiServerExternalPort: ${k8s.cms.generic.service.rmiServerExternalPort}
+    rmiRegistryExternalPort: ${k8s.cms.generic.service.rmiRegistryExternalPort}
+    readinessProbe:
+      enabled: ${k8s.cms.generic.service.readinessProbe.enabled}
+    livenessProbe:
+      enabled: ${k8s.cms.generic.service.livenessProbe.enabled}
+  secret:
+    credential:
+      adminUser: ${k8s.cms.generic.secret.credential.adminUser}
+      adminPassword: ${k8s.cms.generic.secret.credential.adminPassword}
+      m2User: ${k8s.cms.generic.secret.credential.m2User}
+      m2Password: ${k8s.cms.generic.secret.credential.m2Password}
+    initContainer:
+      name: digitaljourney.azurecr.io
+      user: ${settings.servers.digitaljourney.azurecr.io.username}
+      pass: ${settings.servers.digitaljourney.azurecr.io.password}
+  persistence:
+    storageClass: ${k8s.cms.generic.persistence.storageClass}
+    size: ${k8s.cms.generic.persistence.size}
+    nfs:
+      enabled: ${k8s.persistence.nfs.enabled}
+      server: ${k8s.persistence.nfs.server}
+      path: ${k8s.persistence.nfs.path}
+      storageClass: nfs
+      accessMode: ReadWriteMany
+      size: ${k8s.persistence.nfs.size}
+    azureFile:
+      enabled: ${k8s.persistence.azureFile.enabled}
+      secretName: ${k8s.persistence.azureFile.secretName}
+      shareName: ${k8s.persistence.azureFile.shareName}
+      readOnly: ${k8s.persistence.azureFile.readOnly}
+      secretNamespace: ${k8s.persistence.azureFile.secretNamespace}
+productcatalog:
+  enabled: ${k8s.productcatalog.enable}
+  service:
+    enabled: true
+    externalPort: 8080
+    internalPort: 8080
+    management:
+      enable: false
+      externalPort: 9990
+      internalPort: 9990
+    context: /
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 40
+      periodSeconds: 30
+      timeoutSeconds: 3
+      successThreshold: 1
+      failureThreshold: 5
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 50
+      periodSeconds: 30
+      timeoutSeconds: 3
+      successThreshold: 1
+      failureThreshold: 5
+  database:
+    name: ${k8s.productcatalog.database.name}
+    host: ${k8s.productcatalog.database.host}
+    port: ${k8s.productcatalog.database.port}
+    secret:
+      name: ${k8s.productcatalog.database.credential.secret}
+      user: adminUser
+      password: adminPassword
+  persistence:
+    storageClass: default
+    accessMode: ReadWriteOnce 
+    size: ${k8s.productcatalog.persistence.size}
+  secret:
+    initcontainer:
+      name: digitaljourney.azurecr.io
+      user: ${settings.servers.digitaljourney.azurecr.io.username}
+      pass: ${settings.servers.digitaljourney.azurecr.io.password}
+    container:
+      name: prodcat.azurecr.io
+      user: ${settings.servers.prodcat.azurecr.io.username}
+      password: ${settings.servers.prodcat.azurecr.io.password}
+      email: omnichannel.development@celfocus.com
+    database:
+      user: ${k8s.productcatalog.database.name}
+      password: ${k8s.productcatalog.database.password}
+  image:
+    pullPolicy: Always
+    repository: prodcat.azurecr.io/productcatalogue-full-liquibase
+    tag: 2.4.1
+  ingress:
+    enabled: true
+    class: nginx
+    maxBodySize: 
+    hosts:
+      - delivery-omnitelco.westeurope.cloudapp.azure.com
+    tls:
+      enabled: false
+      issuer: 
+      secretName: productcatalog-tls
+    altPathsEnabled: false
+    tls:
+      enabled: false
+      issuer: 
+      secretName: productcatalog-tls
+    altPaths: []
+    rewriteTarget: /
+    paths:
+      - /productcatalog
+  init:
+    wait:
+      enabled: true
+      imageRepository: digitaljourney.azurecr.io/tools
+      imageTag: "2.1.27"
+      imagePullPolicy: IfNotPresent

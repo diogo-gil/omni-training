@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '2'))
+    }
+
+    parameters {
+        choice(
+                name: 'Sonar',
+                description: '\nActions available:\n\n- Verify: Verifies the plugin\n- Release: Releases a new plugin version\n- Register: Registers a feature repository\n- Unregister: Unregisters a feature repository\n- Install: Install plugin feature(s)\n- Uninstall: Uninstall plugin feature(s)\n- Publish: Perform a release, a feature repository registration and a feature install\n- Unpublish: Uninstall the feature and unregister the feature repository\n',
+                choices: 'Verify\nRelease\nRegister\nUnregister\nInstall\nUninstall\nPublish\nUnpublish'
+        )
+    }
+
+    environment {
+        POM_FILE = 'build/telco-modules/pom.xml'
+        GROUP_ID = ''
+        ARTIFACT_ID = ''
+    }
+
+    stages {
+
+        stage('Sonar') {
+            steps {
+                withMaven(
+                        maven: 'maven36',
+                        mavenSettingsConfig: 'telco-maven-settings') {
+                    sshagent(credentials: ['telco-bitbucket-sshkey']) {
+                        sh "mvn -f ${POM_FILE} clean install -Pverify-profile sonar:sonar -Dsonar.host.url=https://support-omnitelco.westeurope.cloudapp.azure.com/sonar -Dsonar.projectName='telco-modules' -Dsonar.login=96b3c696b8312b9aecf39d88730b1b16bc947d7e"
+                    }
+                }
+            }
+        }
+    }
+}

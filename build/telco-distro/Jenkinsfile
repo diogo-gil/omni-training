@@ -1,0 +1,54 @@
+pipeline {
+	agent any
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr: '2'))
+	}
+	
+	parameters {
+		choice(
+			name: 'Action',
+			description: 'Action',
+			choices: 'Verify\nRelease'
+		)
+		booleanParam(
+			name: 'DockerSkip', 
+			defaultValue: false,
+			description: 'Docker Skip')
+	}
+
+	environment {
+		POM_FILE = 'build/telco-distro/pom.xml'
+	}
+	
+	stages {
+		stage('Verify') {
+			when {
+				expression { params.Action == 'Verify' } 
+			}
+			steps {
+				withMaven(
+					maven: 'maven36',
+					mavenSettingsConfig: 'telco-maven-settings') {
+					sh "mvn -Ddocker.skip=${params.DockerSkip} -Pverify-profile -f ${POM_FILE} clean install"
+				}
+			}
+		}
+
+		stage('Release') {
+			when {
+				expression { params.Action == 'Release' } 
+			}
+			steps {
+				withMaven(
+					maven: 'maven36',
+					mavenSettingsConfig: 'telco-maven-settings') {
+						sshagent (credentials: ['telco-bitbucket-sshkey']) {
+							sh "mvn -e -X -Ddocker.skip=${params.DockerSkip} -Prelease-profile -f ${POM_FILE} external.atlassian.jgitflow:jgitflow-maven-plugin:1.0.0:release-start -DpullDevelop=true -DpullMaster=true"
+							sh "mvn -e -X -Ddocker.skip=${params.DockerSkip} -Prelease-profile -f ${POM_FILE} external.atlassian.jgitflow:jgitflow-maven-plugin:1.0.0:release-finish -DpullDevelop=true -DpullMaster=true"
+						}
+				}
+			}
+		}
+	}
+}

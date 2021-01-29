@@ -1,0 +1,50 @@
+pipeline {
+	agent any
+
+	options {
+		buildDiscarder(logRotator(numToKeepStr: '1'))
+	}
+	
+	parameters {
+		choice(
+			name: 'ACTION',
+			description: 'Action',
+			choices: 'Verify\nRelease'
+		)
+	}
+
+	environment {
+		POM_FILE = 'build/telco-deploy-k8s/pom.xml'
+	}
+	
+	stages {
+		stage('Verify') {
+			when {
+				expression { params.ACTION == 'Verify' } 
+			}
+			steps {
+				withMaven(
+					maven: 'maven36',
+					mavenSettingsConfig: 'telco-maven-settings') {
+					sh "mvn -Pverify-profile -f ${POM_FILE} clean install"
+				}
+			}
+		}
+
+		stage('Release') {
+			when {
+				expression { params.ACTION == 'Release' } 
+			}
+			steps {
+				withMaven(
+					maven: 'maven36',
+					mavenSettingsConfig: 'telco-maven-settings') {
+						sshagent (credentials: ['telco-bitbucket-sshkey']) {
+							sh "mvn -Prelease-profile -f ${POM_FILE} external.atlassian.jgitflow:jgitflow-maven-plugin:1.0.0:release-start -DpullDevelop=true -DpullMaster=true"
+							sh "mvn -Prelease-profile -f ${POM_FILE} external.atlassian.jgitflow:jgitflow-maven-plugin:1.0.0:release-finish -DpullDevelop=true -DpullMaster=true"
+						}
+				}
+			}
+		}
+	}
+}

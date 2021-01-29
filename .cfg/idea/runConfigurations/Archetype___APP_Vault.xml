@@ -1,0 +1,55 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Archetype - APP Vault" type="MavenRunConfiguration" factoryName="Maven" folderName="Archetypes">
+    <MavenSettings>
+      <option name="myGeneralSettings" />
+      <option name="myRunnerSettings">
+        <MavenRunnerSettings>
+          <option name="environmentProperties">
+            <map />
+          </option>
+          <option name="jreName" value="#USE_PROJECT_JDK" />
+          <option name="mavenProperties">
+            <map>
+              <entry key="app" value="SampleApp" />
+              <entry key="archetypeArtifactId" value="app-vault-archetype" />
+              <entry key="archetypeGroupId" value="com.celfocus.platform.tooling.archetypes" />
+              <entry key="artifactId" value="sampleapp" />
+              <entry key="distroVersion" value="1.0.0-SNAPSHOT" />
+              <entry key="groupId" value="com.celfocus.omnichannel.telco"/>
+              <entry key="parentDistroArtifactId" value="distro" />
+              <entry key="parentDistroGroupId" value="com.celfocus.omnichannel.telco.plugins"/>
+              <entry key="parentDistroVersion" value="1.0.0-SNAPSHOT" />
+              <entry key="projectCode" value="telco" />
+              <entry key="projectGroup" value="omni" />
+              <entry key="rootArtifactDescription" value="Application Description" />
+              <entry key="version" value="1.0.0-SNAPSHOT" />
+            </map>
+          </option>
+          <option name="passParentEnv" value="true" />
+          <option name="runMavenInBackground" value="true" />
+          <option name="skipTests" value="false" />
+          <option name="vmOptions" value="" />
+        </MavenRunnerSettings>
+      </option>
+      <option name="myRunnerParameters">
+        <MavenRunnerParameters>
+          <option name="profiles">
+            <set />
+          </option>
+          <option name="goals">
+            <list>
+              <option value="archetype:generate" />
+              <option value="-B" />
+            </list>
+          </option>
+          <option name="profilesMap">
+            <map />
+          </option>
+          <option name="resolveToWorkspace" value="false" />
+          <option name="workingDirPath" value="$PROJECT_DIR$" />
+        </MavenRunnerParameters>
+      </option>
+    </MavenSettings>
+    <method />
+  </configuration>
+</component>

@@ -1,0 +1,69 @@
+{{- $root := . -}}
+{{- $ingress := .Values.ingress -}}
+{{- $service := .Values.service -}}
+{{- if $ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "cms.fullname" . }}
+  labels:
+    app: {{ template "cms.name" . }}
+    chart: {{ template "cms.chartname" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: {{ .Values.app.component }}
+  annotations:
+    kubernetes.io/ingress.class: {{ $ingress.class | quote }}
+  {{- if $ingress.tls.enabled }}
+    certmanager.k8s.io/cluster-issuer: {{ $ingress.tls.issuer | quote }}
+  {{- end }}
+  {{- if $ingress.rewriteTarget }}
+    nginx.ingress.kubernetes.io/rewrite-target: {{ $ingress.rewriteTarget | quote }}
+  {{- end }}
+  {{- if $ingress.maxBodySize }}
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ $ingress.maxBodySize | quote }}
+  {{- end }}
+  nginx.ingress.kubernetes.io/websocket-services: "client-delivery-cms-generic"
+  nginx.org/websocket-services: "client-delivery-cms-generic"
+  nginx.ingress.kubernetes.io/proxy-next-upstream: error timeout invalid_header
+    http_502 http_503 http_504 non_idempotent
+  nginx.ingress.kubernetes.io/proxy-redirect-from: ~*^(http://)(.*)
+  nginx.ingress.kubernetes.io/proxy-redirect-to: https://$2
+spec:
+{{- if $ingress.tls.enabled }}
+  tls:
+  - hosts:
+    {{- range $ingress.hosts }}
+      - {{ . }}
+    {{- end }}
+    secretName: {{ $ingress.tls.secretName  }}
+{{- end }}
+  rules:
+  {{- range $ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+        {{- range $ingress.paths }}
+          - path: {{ . }}
+            backend:
+              serviceName: "client-delivery-cms-generic"
+              servicePort: {{ $service.httpExternalPort }}
+        {{- end }}
+        {{- if $ingress.altPathsEnabled }}
+        {{- range $ingress.altPaths }}
+          - path: {{ . }}
+            backend:
+              serviceName: "client-delivery-cms-generic"
+              servicePort: {{ $service.httpExternalPort }}
+        {{- end }}
+        {{- end }}
+          - path: /notifications
+            backend:
+              serviceName: "client-delivery-cms-generic"
+              servicePort: {{ $service.httpExternalPort }}
+          - path: /prepaidactivation
+            backend:
+              serviceName: "client-delivery-cms-generic"
+              servicePort: {{ $service.httpExternalPort }}
+  {{- end }}
+{{- end -}}

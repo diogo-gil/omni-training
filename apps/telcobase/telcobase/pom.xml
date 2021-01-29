@@ -1,0 +1,91 @@
+<!--
+  #%L
+  Apps :: Telco Base
+  %%
+  Copyright (C) 2017 - 2020 Celfocus Omnichannel
+  %%
+  All rights reserved. This software is protected under several
+  Laws in various countries. All content, layout, design of this document are the
+  intellectual property of Celfocus, Novabase Business Solutions S.A. 
+  and its licensors. The disclosure,copying, adaptation, citation, transcription, 
+  translation, modification, decompilation, reverse engineering, derivatives, 
+  integration, development and/or any other form of total or partial use of the 
+  content of this document and/or accessible through or via the contents, by any 
+  possible means without the respective authorization or licensing by the owner of 
+  the intellectual property rights is prohibited, the offenders being subject to civil 
+  and/or criminal prosecution and liability. The user or licensee of all or part of this 
+  document by any means may only use the document under the terms and conditions agreed
+  upon with the owner of the intellectual property rights, and for the purposes
+  justifying the granting of the license or authorization, without which the
+  unauthorized use may subject the offenders to civil or criminal prosecution
+  under applicable Laws.
+  #L%
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- ====================================================================== -->
+	<!-- = P A R E N T- P R O J E C T- D E S C R I P T I O N ================== -->
+	<!-- ====================================================================== -->
+	
+	<parent>
+		<groupId>com.celfocus.omnichannel.telco.plugins</groupId>
+		<artifactId>telco-plugins-distro</artifactId>
+		<version>2.1.2</version>
+	</parent>
+	
+	<!-- ====================================================================== -->
+	<!-- = P R O J E C T- D E S C R I P T I O N =============================== -->
+	<!-- ====================================================================== -->
+
+	<groupId>com.celfocus.omnichannel.telco.apps</groupId>
+	<artifactId>telcobase</artifactId>
+	<version>1.0.3</version>
+	<packaging>pom</packaging>
+
+	<name>Apps :: Telco Base</name>
+	<description>Telco Base</description>
+
+	<!-- ====================================================================== -->
+	<!-- = P R O J E C T- P R O P E R T I E S ================================= -->
+	<!-- ====================================================================== -->
+
+	<properties>
+		<!-- SCM MANAGEMENT -->
+		<scm.path>celfocus/omni-telco.git</scm.path>
+		
+		<!-- GITFLOW MANAGEMENT -->
+		<gitflow.versionTagPrefix>version/apps/telcobase/</gitflow.versionTagPrefix>
+
+		<!-- BUNDLE INSTRUCTIONS -->
+		<bundle.category>omni-telco</bundle.category>
+		
+		<!-- VERSION MANAGEMENT -->
+		
+		<!-- APIs -->
+		
+	</properties>
+	
+	<!-- ====================================================================== -->
+	<!-- = D E P E N D E N C Y- M A N A G E M E N T =========================== -->
+	<!-- ====================================================================== -->
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.digitaljourney.platform.plugins.modules</groupId>
+				<artifactId>uam-service-api</artifactId>
+				<version>${platform.plugins.modules.uam.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>	
+	
+	<!-- ====================================================================== -->
+	<!-- = P R O J E C T- M O D U L E S ======================================= -->
+	<!-- ====================================================================== -->
+
+	<modules>
+		<module>../telcobase-cms</module>
+		<module>../telcobase-karafarchive</module>
+	</modules>
+</project>

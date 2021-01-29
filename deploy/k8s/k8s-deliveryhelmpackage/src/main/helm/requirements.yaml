@@ -1,0 +1,9 @@
+dependencies:
+  - name: ${k8s.nginx-ingress.name}
+    version: ${k8s.nginx-ingress.version}
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: nginx-ingress.deploy
+  - name: ${k8s.cert-manager.name}
+    version: ${k8s.cert-manager.version}
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    condition: cert-manager.deploy

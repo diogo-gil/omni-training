@@ -1,0 +1,119 @@
+# Application
+app:
+  name: ${k8s.app.name}
+  component: ${k8s.app.component}
+  statefull:
+    replicaCount: ${k8s.app.statefull.replicaCount}
+  stateless:
+    replicaCount: ${k8s.app.stateless.replicaCount}
+  updateStrategy: ${k8s.app.updateStrategy}
+  restartPolicy: ${k8s.app.restartPolicy}
+  antiAffinity: ${k8s.app.antiAffinity}
+  podManagementPolicy: ${k8s.app.podManagementPolicy}
+  revisionHistoryLimit: ${k8s.app.revisionHistoryLimit}
+  terminationGracePeriodSeconds: ${k8s.app.terminationGracePeriodSeconds}
+# Image
+image:
+  name: ${k8s.image.name}
+  repository: ${k8s.image.repository}
+  tag: "${k8s.image.tag}"
+  pullPolicy: ${k8s.image.pullPolicy}
+# Conf
+conf:
+  timezone: ${k8s.conf.timezone}
+  m2Profile: "${k8s.conf.m2Profile}"
+  m2Settings: "${k8s.conf.m2Settings}"
+  m2MirrorUrl: "${k8s.conf.m2MirrorUrl}"
+  m2MirrorMirrorOf: "${k8s.conf.m2MirrorMirrorOf}"
+  minMem: ${k8s.conf.minMem}
+  maxMem: ${k8s.conf.maxMem}
+  cleanAll: ${k8s.conf.cleanAll}
+  cleanCache: ${k8s.conf.cleanCache}
+  customOpts: "${k8s.conf.customOpts}"
+  webconsolePath: ${k8s.conf.webconsolePath}
+  cellar:
+    group: ${k8s.conf.cellar.group}
+    bundleSync: ${k8s.conf.cellar.bundleSync}
+    configSync: ${k8s.conf.cellar.configSync}
+    featureSync: ${k8s.conf.cellar.featureSync}
+    producer: ${k8s.conf.cellar.producer}
+    consumer: ${k8s.conf.cellar.consumer}
+    bundleEventHandler: ${k8s.conf.cellar.bundleEventHandler}
+    configurationEventHandler: ${k8s.conf.cellar.configurationEventHandler}
+    featureEventHandler: ${k8s.conf.cellar.featureEventHandler}
+    remoteServiceCallHandler: ${k8s.conf.cellar.remoteServiceCallHandler}
+    clusterEventHandler: ${k8s.conf.cellar.clusterEventHandler}
+# Init
+init:
+  wait:
+    enabled: ${k8s.init.wait.enabled}
+    imageRepository: ${k8s.init.wait.imageRepository}
+    imageTag: "${k8s.init.wait.imageTag}"
+    imagePullPolicy: ${k8s.init.wait.imagePullPolicy}
+    volumeName: ${k8s.init.wait.volumeName}
+    configMapName: ${k8s.init.wait.configMapName} 
+    scriptName: ${k8s.init.wait.scriptName}
+    mountPath: ${k8s.init.wait.mountPath}
+# Ingress
+ingress:
+  enabled: ${k8s.ingress.enabled}
+  class: ${k8s.ingress.class}
+  rewriteTarget: ${k8s.ingress.rewriteTarget}
+  maxBodySize: ${k8s.ingress.maxBodySize}
+  hosts:
+    - ${k8s.ingress.host}
+  tls:
+    enabled: ${k8s.ingress.tls.enabled}
+    issuer: ${k8s.ingress.tls.issuer}
+    secretName: ${k8s.ingress.tls.secretName}
+  paths: 
+    - ${k8s.ingress.path}
+  altPathsEnabled: ${k8s.ingress.altPathsEnabled} 
+  altPaths: []
+# Service
+service:
+  httpExternalPort: ${k8s.service.httpExternalPort}
+  httpInternalPort: ${k8s.service.httpInternalPort}
+  sshExternalPort: ${k8s.service.sshExternalPort}
+  sshInternalPort: ${k8s.service.sshInternalPort}
+  rmiServerExternalPort: ${k8s.service.rmiServerExternalPort}
+  rmiServerInternalPort: ${k8s.service.rmiServerInternalPort}
+  rmiRegistryExternalPort: ${k8s.service.rmiRegistryExternalPort}
+  rmiRegistryInternalPort: ${k8s.service.rmiRegistryInternalPort}
+  context: ${k8s.service.context}
+  readinessProbe:
+    enabled: ${k8s.service.readinessProbe.enabled}
+    initialDelaySeconds: ${k8s.service.readinessProbe.initialDelaySeconds}
+    periodSeconds: ${k8s.service.readinessProbe.periodSeconds}
+    timeoutSeconds: ${k8s.service.readinessProbe.timeoutSeconds}
+    successThreshold: ${k8s.service.readinessProbe.successThreshold}
+    failureThreshold: ${k8s.service.readinessProbe.failureThreshold}
+  livenessProbe:
+    enabled: ${k8s.service.livenessProbe.enabled}
+    initialDelaySeconds: ${k8s.service.livenessProbe.initialDelaySeconds}
+    periodSeconds: ${k8s.service.livenessProbe.periodSeconds}
+    timeoutSeconds: ${k8s.service.livenessProbe.timeoutSeconds}
+    successThreshold: ${k8s.service.livenessProbe.successThreshold}
+    failureThreshold: ${k8s.service.livenessProbe.failureThreshold}
+# Persistence
+persistence:
+  storageClass: ${k8s.persistence.storageClass}
+  accessMode: ${k8s.persistence.accessMode}
+  size: ${k8s.persistence.size}
+# Secret
+secret:
+  initContainer:
+    name: ${k8s.secret.initContainer.name}
+    user: ${k8s.secret.initContainer.user}
+    password: ${k8s.secret.initContainer.password}
+    email: ${k8s.secret.initContainer.email}
+  container:
+    name: ${k8s.secret.container.name}
+    user: ${k8s.secret.container.user}
+    password: ${k8s.secret.container.password}
+    email: ${k8s.secret.container.email}
+  credential:
+    adminUser: ${k8s.secret.credential.adminUser}
+    adminPassword: ${k8s.secret.credential.adminPassword}
+    m2User: ${k8s.secret.credential.m2User}
+    m2Password: ${k8s.secret.credential.m2Password}

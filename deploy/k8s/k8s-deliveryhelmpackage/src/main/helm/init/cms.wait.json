@@ -1,0 +1,30 @@
+[
+	{
+		"name": "Elasticsearch",
+		"type": "ELASTICSEARCH",
+		"address": "http://${k8s.elasticsearch.service.name}:${k8s.elasticsearch.service.httpExternalPort}",
+		"retries": 50,
+		"delay": 10
+	},
+	{
+		"name": "Zookeeper",
+		"type": "ZOOKEEPER",
+		"address": "http://${k8s.zookeeper.service.name}:${k8s.zookeeper.service.clientExternalPort}",
+		"retries": 50,
+		"delay": 10
+	},
+	{
+		"name": "Cave",
+		"type": "SOCKET",
+		"address": "http://${k8s.cave.service.name}:${k8s.cave.service.httpExternalPort}",
+		"retries": 50,
+		"delay": 10
+	},
+	{
+		"name": "Core",
+		"type": "SOCKET",
+		"address": "http://${k8s.core.service.name}:${k8s.core.service.httpExternalPort}",
+		"retries": 50,
+		"delay": 10
+	}
+]

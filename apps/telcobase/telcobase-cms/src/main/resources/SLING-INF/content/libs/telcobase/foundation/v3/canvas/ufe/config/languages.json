@@ -1,0 +1,15 @@
+{
+  "disableOsLanguagePreference": false,
+  "availableLanguages": [
+    {
+      "code": "pt-PT",
+      "name": "Português",
+      "default": false
+    },
+    {
+      "code": "en-US",
+      "name": "English (USA)",
+      "default": true
+    }
+  ]
+}

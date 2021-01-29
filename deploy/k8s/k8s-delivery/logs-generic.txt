@@ -1,0 +1,803 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] 01-elasticsearch-config-app-dir: applying... 
+[fix-attrs.d] 01-elasticsearch-config-app-dir: exited 0.
+[fix-attrs.d] 02-elasticsearch-plugins-app-dir: applying... 
+[fix-attrs.d] 02-elasticsearch-plugins-app-dir: exited 0.
+[fix-attrs.d] 03-elasticsearch-data-dir: applying... 
+[fix-attrs.d] 03-elasticsearch-data-dir: exited 0.
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] 00-java-cacerts-init: executing... 
+-- Customizing base java configuration
+-- # Importing certificates from /opt/init/java/cacerts
+-- # Importing /opt/init/java/cacerts/alphassl.der certificate with alphassl alias
+Certificate was added to keystore
+-- # Finished importing certificates from /opt/init/java/cacerts
+-- Finished customizing base java configuration
+[cont-init.d] 00-java-cacerts-init: exited 0.
+[cont-init.d] 01-elasticsearch-init: executing... 
+-- Validating environment
+-- # ES_APP_DIR=/opt/elastic/elasticsearch
+-- # ES_LIB_DIR=/opt/elastic/elasticsearch-lib
+-- # ES_CONFIG_DIR=/elasticsearch-config
+-- # ES_DATA_DIR=/elasticsearch-data
+-- # ES_DB_DIR=/elasticsearch-data/database
+-- # ES_LOG_DIR=/elasticsearch-data/log
+-- # ES_CONFIG_APP_DIR=/opt/elastic/elasticsearch/config
+-- # ES_SERVER_LIB_DIR=/opt/elastic/elasticsearch-lib/server
+-- # ES_SERVER_CONFIG_DIR=/elasticsearch-config/server
+-- Environment validation successful
+-- Copying elasticsearch configuration
+-- # From /opt/elastic/elasticsearch-lib/server
+-- # From /elasticsearch-config/server
+-- Finished copying elasticsearch configuration
+-- Replacing environment variables in /opt/elastic/elasticsearch/config folder
+-- # Replacing environment variables in elasticsearch.yml
+-- # Replacing environment variables in jvm.options
+-- # Replacing environment variables in log4j2.properties
+-- Finished replacing environment variables in /opt/elastic/elasticsearch/config folder
+-- Creating Elasticsearch data folders and files
+Created Elasticsearch data folders and files in /elasticsearch-data
+--- Installing plugins from /opt/elastic/elasticsearch-lib/plugins
+--- Finished installing plugins from /opt/elastic/elasticsearch-lib/plugins
+[cont-init.d] 01-elasticsearch-init: exited 0.
+[cont-init.d] done.
+[services.d] starting services
+[services.d] done.
+[2018-09-20T19:03:22,888][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] initializing ...
+[2018-09-20T19:03:23,214][INFO ][o.e.e.NodeEnvironment    ] [delivery-elasticsearch-generic-0] using [1] data paths, mounts [[/opt/elastic/elasticsearch-work (/dev/sde)]], net usable_space [477.2gb], net total_space [502.9gb], types [ext4]
+[2018-09-20T19:03:23,215][INFO ][o.e.e.NodeEnvironment    ] [delivery-elasticsearch-generic-0] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-09-20T19:03:23,217][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] node name [delivery-elasticsearch-generic-0], node ID [k2MVits5SSird8e0E0CiMQ]
+[2018-09-20T19:03:23,217][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] version[6.1.2], pid[1173], build[5b1fea5/2018-01-10T02:35:59.208Z], OS[Linux/4.13.0-1011-azure/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_181/25.181-b13]
+[2018-09-20T19:03:23,218][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] JVM arguments [-Xms2G, -Xmx2G, -XX:MaxDirectMemorySize=512g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/opt/elastic/elasticsearch, -Des.path.conf=/opt/elastic/elasticsearch/config]
+[2018-09-20T19:03:24,503][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [aggs-matrix-stats]
+[2018-09-20T19:03:24,504][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [analysis-common]
+[2018-09-20T19:03:24,505][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [ingest-common]
+[2018-09-20T19:03:24,505][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [lang-expression]
+[2018-09-20T19:03:24,505][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [lang-mustache]
+[2018-09-20T19:03:24,505][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [lang-painless]
+[2018-09-20T19:03:24,507][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [mapper-extras]
+[2018-09-20T19:03:24,507][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [parent-join]
+[2018-09-20T19:03:24,507][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [percolator]
+[2018-09-20T19:03:24,508][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [reindex]
+[2018-09-20T19:03:24,508][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [repository-url]
+[2018-09-20T19:03:24,509][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [transport-netty4]
+[2018-09-20T19:03:24,509][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] loaded module [tribe]
+[2018-09-20T19:03:24,510][INFO ][o.e.p.PluginsService     ] [delivery-elasticsearch-generic-0] no plugins loaded
+[2018-09-20T19:03:26,123][INFO ][o.e.d.DiscoveryModule    ] [delivery-elasticsearch-generic-0] using discovery type [zen]
+[2018-09-20T19:03:27,162][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] initialized
+[2018-09-20T19:03:27,162][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] starting ...
+[2018-09-20T19:03:27,312][INFO ][o.e.t.TransportService   ] [delivery-elasticsearch-generic-0] publish_address {10.244.5.17:9300}, bound_addresses {[::]:9300}
+[2018-09-20T19:03:27,332][INFO ][o.e.b.BootstrapChecks    ] [delivery-elasticsearch-generic-0] bound or publishing to a non-loopback address, enforcing bootstrap checks
+[2018-09-20T19:03:27,392][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:30,401][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:30,401][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:33,403][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:33,404][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:36,406][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:36,406][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:39,408][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:39,417][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:42,418][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:42,419][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:45,421][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:45,422][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:48,424][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:48,424][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:51,426][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:51,435][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:54,437][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:54,437][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:03:57,386][WARN ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] timed out while waiting for initial discovery state - timeout: 30s
+[2018-09-20T19:03:57,396][INFO ][o.e.h.n.Netty4HttpServerTransport] [delivery-elasticsearch-generic-0] publish_address {10.244.5.17:9200}, bound_addresses {[::]:9200}
+[2018-09-20T19:03:57,396][INFO ][o.e.n.Node               ] [delivery-elasticsearch-generic-0] started
+[2018-09-20T19:03:57,444][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:03:57,444][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:00,446][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:00,446][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:03,448][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:03,457][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:06,458][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:06,459][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:09,460][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:09,461][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:12,463][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:12,464][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:15,466][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:15,474][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:18,476][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:18,476][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:19,046][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] no known master node, scheduling a retry
+[2018-09-20T19:04:21,478][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:21,479][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:22,333][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] no known master node, scheduling a retry
+[2018-09-20T19:04:24,480][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:24,481][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:27,491][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:27,498][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:30,499][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:30,500][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:33,502][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:33,502][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:36,504][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:36,504][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:39,506][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:39,582][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:42,584][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:42,585][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:45,588][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:45,588][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:48,590][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:48,590][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:49,050][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] timed out while retrying [cluster:monitor/health] after failure (timeout [30s])
+[2018-09-20T19:04:49,053][WARN ][r.suppressed             ] path: /_cat/health, params: {h=status}
+org.elasticsearch.discovery.MasterNotDiscoveredException: null
+	at org.elasticsearch.action.support.master.TransportMasterNodeAction$AsyncSingleAction$4.onTimeout(TransportMasterNodeAction.java:213) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ContextPreservingListener.onTimeout(ClusterStateObserver.java:317) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ObserverClusterStateListener.onTimeout(ClusterStateObserver.java:244) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.service.ClusterApplierService$NotifyTimeout.run(ClusterApplierService.java:578) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:49,121][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] no known master node, scheduling a retry
+[2018-09-20T19:04:51,592][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:51,601][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:52,334][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] timed out while retrying [cluster:monitor/health] after failure (timeout [30s])
+[2018-09-20T19:04:52,334][WARN ][r.suppressed             ] path: /_cat/health, params: {h=status}
+org.elasticsearch.discovery.MasterNotDiscoveredException: null
+	at org.elasticsearch.action.support.master.TransportMasterNodeAction$AsyncSingleAction$4.onTimeout(TransportMasterNodeAction.java:213) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ContextPreservingListener.onTimeout(ClusterStateObserver.java:317) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ObserverClusterStateListener.onTimeout(ClusterStateObserver.java:244) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.service.ClusterApplierService$NotifyTimeout.run(ClusterApplierService.java:578) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:52,389][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] no known master node, scheduling a retry
+[2018-09-20T19:04:54,602][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:54,603][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:04:57,606][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:04:57,607][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:00,608][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:00,609][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:03,611][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:03,618][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:06,619][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:06,620][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:09,622][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:09,622][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:12,624][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:12,625][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:15,628][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:15,637][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:18,639][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:18,639][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:19,123][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] timed out while retrying [cluster:monitor/health] after failure (timeout [30s])
+[2018-09-20T19:05:19,123][WARN ][r.suppressed             ] path: /_cat/health, params: {h=status}
+org.elasticsearch.discovery.MasterNotDiscoveredException: null
+	at org.elasticsearch.action.support.master.TransportMasterNodeAction$AsyncSingleAction$4.onTimeout(TransportMasterNodeAction.java:213) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ContextPreservingListener.onTimeout(ClusterStateObserver.java:317) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ObserverClusterStateListener.onTimeout(ClusterStateObserver.java:244) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.service.ClusterApplierService$NotifyTimeout.run(ClusterApplierService.java:578) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:19,178][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] no known master node, scheduling a retry
+[2018-09-20T19:05:21,641][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:21,641][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:22,390][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] timed out while retrying [cluster:monitor/health] after failure (timeout [30s])
+[2018-09-20T19:05:22,391][WARN ][r.suppressed             ] path: /_cat/health, params: {h=status}
+org.elasticsearch.discovery.MasterNotDiscoveredException: null
+	at org.elasticsearch.action.support.master.TransportMasterNodeAction$AsyncSingleAction$4.onTimeout(TransportMasterNodeAction.java:213) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ContextPreservingListener.onTimeout(ClusterStateObserver.java:317) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.ClusterStateObserver$ObserverClusterStateListener.onTimeout(ClusterStateObserver.java:244) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.cluster.service.ClusterApplierService$NotifyTimeout.run(ClusterApplierService.java:578) [elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:22,452][DEBUG][o.e.a.a.c.h.TransportClusterHealthAction] [delivery-elasticsearch-generic-0] no known master node, scheduling a retry
+[2018-09-20T19:05:24,643][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:24,644][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:27,653][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:27,659][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic: System error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:1.8.0_181]
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:30,660][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:30,661][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]
+[2018-09-20T19:05:33,663][WARN ][o.e.d.z.ZenDiscovery     ] [delivery-elasticsearch-generic-0] not enough master nodes discovered during pinging (found [[Candidate{node={delivery-elasticsearch-generic-0}{k2MVits5SSird8e0E0CiMQ}{VlXjgQC9TWuapQ5nB_AZ4g}{10.244.5.17}{10.244.5.17:9300}, clusterStateVersion=-1}]], but needed [2]), pinging again
+[2018-09-20T19:05:33,663][WARN ][o.e.d.z.UnicastZenPing   ] [delivery-elasticsearch-generic-0] failed to resolve host [headless-delivery-elasticsearch-generic]
+java.net.UnknownHostException: headless-delivery-elasticsearch-generic
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1280) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192) ~[?:1.8.0_181]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126) ~[?:1.8.0_181]
+	at org.elasticsearch.transport.TcpTransport.parse(TcpTransport.java:917) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TcpTransport.addressesFromString(TcpTransport.java:872) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.transport.TransportService.addressesFromString(TransportService.java:699) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at org.elasticsearch.discovery.zen.UnicastZenPing.lambda$null$0(UnicastZenPing.java:213) ~[elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_181]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:568) [elasticsearch-6.1.2.jar:6.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_181]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_181]

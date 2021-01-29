@@ -1,0 +1,41 @@
+{
+    "overrides": {
+        "UFEBase": {
+            "visible360": {
+                "gridTemplateColumns": "auto auto 450px",
+                "-ms-grid-columns": "2fr 450px"
+            }
+        },
+        "UiLibSelectorBlock":{
+            "optionsBlockSelectedPrimary":{
+                "color":"white"
+            }
+        },
+        "UfeSearchOption": {
+            "optionSelected":{
+                "& p":{
+                    "color": "white !important"
+                },
+                "& span":{
+                    "color": "white !important"
+                }
+            }
+        },
+        "UfeNotificationsCarouselCard":{
+            "selected":{
+                "backgroundColor":"rgba(170, 11, 0, 0.08)"
+            }
+            
+        },
+        "UfeNotificationsListItem":{
+            "rootSelected":{
+                "backgroundColor":"rgba(170, 11, 0, 0.08)",
+                "&:hover":{
+                    "backgroundColor":"rgba(170, 11, 0, 0.08)"
+                }
+            }
+        }
+    },
+    "spacing": {},
+    "shadows": []
+}

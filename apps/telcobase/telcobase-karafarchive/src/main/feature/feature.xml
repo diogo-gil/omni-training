@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="omni-telco-telcobase-modules-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+	<repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
+	<feature name="telcobase-modules" description="TelcoBase Modules" version="${project.version}">
+		<feature>cms-mvc</feature>
+		<bundle>mvn:com.celfocus.omnichannel.telco.apps/telcobase-cms/${project.version}</bundle>
+	</feature>
+	
+	<feature name="telcobase" description="TelcoBase" version="${project.version}">
+		<feature>telcobase-modules</feature>
+	</feature>
+</features>

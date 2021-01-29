@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ template "core.fullname" . }}
+  labels:
+    app: {{ template "core.name" . }}
+    chart: {{ template "core.chartname" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: {{ .Values.app.component }}
+data:
+{{ (.Files.Glob "{etc/*.cfg,etc/*.xml}").AsConfig | indent 2 }}
+{{ (.Files.Glob "{deploy/*.*}").AsSecrets | indent 2 }}

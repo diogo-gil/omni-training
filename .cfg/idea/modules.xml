@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/distro/base/base/base.iml" filepath="$PROJECT_DIR$/distro/base/base/base.iml" group="distro/base" />
+      <module fileurl="file://$PROJECT_DIR$/distro/base/base-charging-karafarchive/base-charging-karafarchive.iml" filepath="$PROJECT_DIR$/distro/base/base-charging-karafarchive/base-charging-karafarchive.iml" group="distro/base" />
+      <module fileurl="file://$PROJECT_DIR$/distro/base/base-common-karafarchive/base-common-karafarchive.iml" filepath="$PROJECT_DIR$/distro/base/base-common-karafarchive/base-common-karafarchive.iml" group="distro/base" />
+      <module fileurl="file://$PROJECT_DIR$/distro/base/base-customerinformation-karafarchive/base-customerinformation-karafarchive.iml" filepath="$PROJECT_DIR$/distro/base/base-customerinformation-karafarchive/base-customerinformation-karafarchive.iml" group="distro/base" />
+      <module fileurl="file://$PROJECT_DIR$/distro/base/base-customerinteraction-karafarchive/base-customerinteraction-karafarchive.iml" filepath="$PROJECT_DIR$/distro/base/base-customerinteraction-karafarchive/base-customerinteraction-karafarchive.iml" group="distro/base" />
+      <module fileurl="file://$PROJECT_DIR$/distro/base/base-serviceproblem-karafarchive/base-serviceproblem-karafarchive.iml" filepath="$PROJECT_DIR$/distro/base/base-serviceproblem-karafarchive/base-serviceproblem-karafarchive.iml" group="distro/base" />
+      <module fileurl="file://$PROJECT_DIR$/modules/charging/charging/charging.iml" filepath="$PROJECT_DIR$/modules/charging/charging/charging.iml" group="modules/charging" />
+      <module fileurl="file://$PROJECT_DIR$/modules/charging/charging-data-api/charging-data-api.iml" filepath="$PROJECT_DIR$/modules/charging/charging-data-api/charging-data-api.iml" group="modules/charging" />
+      <module fileurl="file://$PROJECT_DIR$/modules/charging/charging-data-ri/charging-data-ri.iml" filepath="$PROJECT_DIR$/modules/charging/charging-data-ri/charging-data-ri.iml" group="modules/charging" />
+      <module fileurl="file://$PROJECT_DIR$/modules/charging/charging-entity/charging-entity.iml" filepath="$PROJECT_DIR$/modules/charging/charging-entity/charging-entity.iml" group="modules/charging" />
+      <module fileurl="file://$PROJECT_DIR$/modules/charging/charging-service-api/charging-service-api.iml" filepath="$PROJECT_DIR$/modules/charging/charging-service-api/charging-service-api.iml" group="modules/charging" />
+      <module fileurl="file://$PROJECT_DIR$/modules/charging/charging-service-ri/charging-service-ri.iml" filepath="$PROJECT_DIR$/modules/charging/charging-service-ri/charging-service-ri.iml" group="modules/charging" />
+      <module fileurl="file://$PROJECT_DIR$/distro/cms/cms/cms.iml" filepath="$PROJECT_DIR$/distro/cms/cms/cms.iml" group="distro/cms" />
+      <module fileurl="file://$PROJECT_DIR$/distro/cms/cms-configuration/cms-configuration.iml" filepath="$PROJECT_DIR$/distro/cms/cms-configuration/cms-configuration.iml" group="distro/cms" />
+      <module fileurl="file://$PROJECT_DIR$/distro/cms/cms-docker/cms-docker.iml" filepath="$PROJECT_DIR$/distro/cms/cms-docker/cms-docker.iml" group="distro/cms" />
+      <module fileurl="file://$PROJECT_DIR$/distro/cms/cms-karafassembly/cms-karafassembly.iml" filepath="$PROJECT_DIR$/distro/cms/cms-karafassembly/cms-karafassembly.iml" group="distro/cms" />
+      <module fileurl="file://$PROJECT_DIR$/modules/common/common/common.iml" filepath="$PROJECT_DIR$/modules/common/common/common.iml" group="modules/common" />
+      <module fileurl="file://$PROJECT_DIR$/modules/common/common-data/common-data.iml" filepath="$PROJECT_DIR$/modules/common/common-data/common-data.iml" group="modules/common" />
+      <module fileurl="file://$PROJECT_DIR$/modules/common/common-entity/common-entity.iml" filepath="$PROJECT_DIR$/modules/common/common-entity/common-entity.iml" group="modules/common" />
+      <module fileurl="file://$PROJECT_DIR$/modules/common/common-service/common-service.iml" filepath="$PROJECT_DIR$/modules/common/common-service/common-service.iml" group="modules/common" />
+      <module fileurl="file://$PROJECT_DIR$/distro/core/core/core.iml" filepath="$PROJECT_DIR$/distro/core/core/core.iml" group="distro/core" />
+      <module fileurl="file://$PROJECT_DIR$/distro/core/core-configuration/core-configuration.iml" filepath="$PROJECT_DIR$/distro/core/core-configuration/core-configuration.iml" group="distro/core" />
+      <module fileurl="file://$PROJECT_DIR$/distro/core/core-docker/core-docker.iml" filepath="$PROJECT_DIR$/distro/core/core-docker/core-docker.iml" group="distro/core" />
+      <module fileurl="file://$PROJECT_DIR$/distro/core/core-karafassembly/core-karafassembly.iml" filepath="$PROJECT_DIR$/distro/core/core-karafassembly/core-karafassembly.iml" group="distro/core" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinformation/customerinformation/customerinformation.iml" filepath="$PROJECT_DIR$/modules/customerinformation/customerinformation/customerinformation.iml" group="modules/customerinformation" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinformation/customerinformation-data-api/customerinformation-data-api.iml" filepath="$PROJECT_DIR$/modules/customerinformation/customerinformation-data-api/customerinformation-data-api.iml" group="modules/customerinformation" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinformation/customerinformation-data-ri/customerinformation-data-ri.iml" filepath="$PROJECT_DIR$/modules/customerinformation/customerinformation-data-ri/customerinformation-data-ri.iml" group="modules/customerinformation" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinformation/customerinformation-entity/customerinformation-entity.iml" filepath="$PROJECT_DIR$/modules/customerinformation/customerinformation-entity/customerinformation-entity.iml" group="modules/customerinformation" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinformation/customerinformation-service-api/customerinformation-service-api.iml" filepath="$PROJECT_DIR$/modules/customerinformation/customerinformation-service-api/customerinformation-service-api.iml" group="modules/customerinformation" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinformation/customerinformation-service-ri/customerinformation-service-ri.iml" filepath="$PROJECT_DIR$/modules/customerinformation/customerinformation-service-ri/customerinformation-service-ri.iml" group="modules/customerinformation" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinteraction/customerinteraction/customerinteraction.iml" filepath="$PROJECT_DIR$/modules/customerinteraction/customerinteraction/customerinteraction.iml" group="modules/customerinteraction" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinteraction/customerinteraction-data-api/customerinteraction-data-api.iml" filepath="$PROJECT_DIR$/modules/customerinteraction/customerinteraction-data-api/customerinteraction-data-api.iml" group="modules/customerinteraction" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinteraction/customerinteraction-data-ri/customerinteraction-data-ri.iml" filepath="$PROJECT_DIR$/modules/customerinteraction/customerinteraction-data-ri/customerinteraction-data-ri.iml" group="modules/customerinteraction" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinteraction/customerinteraction-entity/customerinteraction-entity.iml" filepath="$PROJECT_DIR$/modules/customerinteraction/customerinteraction-entity/customerinteraction-entity.iml" group="modules/customerinteraction" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinteraction/customerinteraction-service-api/customerinteraction-service-api.iml" filepath="$PROJECT_DIR$/modules/customerinteraction/customerinteraction-service-api/customerinteraction-service-api.iml" group="modules/customerinteraction" />
+      <module fileurl="file://$PROJECT_DIR$/modules/customerinteraction/customerinteraction-service-ri/customerinteraction-service-ri.iml" filepath="$PROJECT_DIR$/modules/customerinteraction/customerinteraction-service-ri/customerinteraction-service-ri.iml" group="modules/customerinteraction" />
+      <module fileurl="file://$PROJECT_DIR$/build/distro/distro.iml" filepath="$PROJECT_DIR$/build/distro/distro.iml" group="distro" />
+      <module fileurl="file://$PROJECT_DIR$/distro/generic/generic/generic.iml" filepath="$PROJECT_DIR$/distro/generic/generic/generic.iml" group="distro/generic" />
+      <module fileurl="file://$PROJECT_DIR$/distro/generic/generic-docker/generic-docker.iml" filepath="$PROJECT_DIR$/distro/generic/generic-docker/generic-docker.iml" group="distro/generic" />
+      <module fileurl="file://$PROJECT_DIR$/distro/generic/generic-karafassembly/generic-karafassembly.iml" filepath="$PROJECT_DIR$/distro/generic/generic-karafassembly/generic-karafassembly.iml" group="distro/generic" />
+      <module fileurl="file://$PROJECT_DIR$/build/modules/modules.iml" filepath="$PROJECT_DIR$/build/modules/modules.iml" group="modules" />
+      <module fileurl="file://$PROJECT_DIR$/modules/serviceproblem/serviceproblem/serviceproblem.iml" filepath="$PROJECT_DIR$/modules/serviceproblem/serviceproblem/serviceproblem.iml" group="modules/serviceproblem" />
+      <module fileurl="file://$PROJECT_DIR$/modules/serviceproblem/serviceproblem-data-api/serviceproblem-data-api.iml" filepath="$PROJECT_DIR$/modules/serviceproblem/serviceproblem-data-api/serviceproblem-data-api.iml" group="modules/serviceproblem" />
+      <module fileurl="file://$PROJECT_DIR$/modules/serviceproblem/serviceproblem-data-ri/serviceproblem-data-ri.iml" filepath="$PROJECT_DIR$/modules/serviceproblem/serviceproblem-data-ri/serviceproblem-data-ri.iml" group="modules/serviceproblem" />
+      <module fileurl="file://$PROJECT_DIR$/modules/serviceproblem/serviceproblem-entity/serviceproblem-entity.iml" filepath="$PROJECT_DIR$/modules/serviceproblem/serviceproblem-entity/serviceproblem-entity.iml" group="modules/serviceproblem" />
+      <module fileurl="file://$PROJECT_DIR$/modules/serviceproblem/serviceproblem-service-api/serviceproblem-service-api.iml" filepath="$PROJECT_DIR$/modules/serviceproblem/serviceproblem-service-api/serviceproblem-service-api.iml" group="modules/serviceproblem" />
+      <module fileurl="file://$PROJECT_DIR$/modules/serviceproblem/serviceproblem-service-ri/serviceproblem-service-ri.iml" filepath="$PROJECT_DIR$/modules/serviceproblem/serviceproblem-service-ri/serviceproblem-service-ri.iml" group="modules/serviceproblem" />
+      <module fileurl="file://$PROJECT_DIR$/build/telco/telco.iml" filepath="$PROJECT_DIR$/build/telco/telco.iml" />
+    </modules>
+  </component>
+</project>

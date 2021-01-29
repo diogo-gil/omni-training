@@ -1,0 +1,50 @@
+{{- $root := . -}}
+{{- $ingress := .Values.ingress -}}
+{{- $service := .Values.service -}}
+{{- if $ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "generic.fullname" . }}
+  labels:
+    app: {{ template "generic.name" . }}
+    chart: {{ template "generic.chartname" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: {{ .Values.app.component }}
+  annotations:
+    kubernetes.io/ingress.class: {{ $ingress.class | quote }}
+  {{- if $ingress.tls.enabled }}
+    certmanager.k8s.io/cluster-issuer: {{ $ingress.tls.issuer | quote }}
+  {{- end }}
+  {{- if $ingress.rewriteTarget }}
+    nginx.ingress.kubernetes.io/rewrite-target: {{ $ingress.rewriteTarget | quote }}
+  {{- end }}
+spec:
+{{- if $ingress.tls.enabled }}
+  tls:
+  - hosts:
+      - $ingress.host
+    {{- range $ingress.hosts }}
+      - {{ . }}
+    {{- end }}
+    secretName: generic-tls
+{{- end }}
+  rules:
+    - host: {{ $ingress.host }}
+      http:
+        paths:
+        - path: {{ $ingress.path | quote }}
+          backend:
+            serviceName: {{ template "generic.clientservice" $root }}
+            servicePort: {{ $service.httpExternalPort }}
+  {{- range $ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+        - path: {{ $ingress.path | quote }}
+          backend:
+            serviceName: {{ template "generic.clientservice" $root }}
+            servicePort: {{ $service.httpExternalPort }}
+  {{- end }}
+{{- end -}}

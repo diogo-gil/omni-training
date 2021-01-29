@@ -1,0 +1,125 @@
+# Application
+app:
+  name: kibana
+  component: kibana
+  statefull:
+    replicaCount: ${k8s.kibana.app.statefull.replicaCount}
+    podManagementPolicy: Parallel
+    revisionHistoryLimit: 10
+    updateStrategy: RollingUpdate
+    restartPolicy: Always
+    terminationGracePeriodSeconds: 30
+    antiAffinity: ${k8s.kibana.app.statefull.antiAffinity}
+  stateless:
+    replicaCount: ${k8s.kibana.app.stateless.replicaCount}
+    revisionHistoryLimit: 10
+    updateStrategy: RollingUpdate
+    restartPolicy: Always
+    terminationGracePeriodSeconds: 30
+    antiAffinity: ${k8s.kibana.app.stateless.antiAffinity}
+# Image
+image:
+  name: digitaljourney.azurecr.io
+  repository: digitaljourney.azurecr.io/kibana
+  tag: "${k8s.kibana.image.tag}"
+  pullPolicy: ${k8s.kibana.image.pullPolicy}
+# Conf
+conf:
+  timezone: ${k8s.kibana.conf.timezone}
+  clusterName: ${k8s.kibana.conf.clusterName}
+  minimumMasterNodes: ${k8s.kibana.conf.minimumMasterNodes}
+  expectedMasterNodes: ${k8s.kibana.conf.expectedMasterNodes}
+  expectedDataNodes: ${k8s.kibana.conf.expectedDataNodes}
+  recoverAfterTime: ${k8s.kibana.conf.recoverAfterTime}
+  recoverAfterMasterNodes: ${k8s.kibana.conf.recoverAfterMasterNodes}
+  recoverAfterDataNodes: ${k8s.kibana.conf.recoverAfterDataNodes}
+  elasticsearch:
+    hostname: ${k8s.kibana.conf.elasticsearch.hostname}
+    username: ${k8s.kibana.conf.elasticsearch.username}
+    password: ${k8s.kibana.conf.elasticsearch.password}
+  statefull:
+    minMem: ${k8s.kibana.conf.statefull.minMem}
+    maxMem: ${k8s.kibana.conf.statefull.maxMem}
+    masterNode: ${k8s.kibana.conf.statefull.masterNode}
+    dataNode: ${k8s.kibana.conf.statefull.dataNode}
+    ingestNode: ${k8s.kibana.conf.statefull.ingestNode}
+  stateless:
+    minMem: ${k8s.kibana.conf.stateless.minMem}
+    maxMem: ${k8s.kibana.conf.stateless.maxMem}
+    masterNode: ${k8s.kibana.conf.stateless.masterNode}
+    dataNode: ${k8s.kibana.conf.stateless.dataNode}
+    ingestNode: ${k8s.kibana.conf.stateless.ingestNode}
+  securityContext:
+    fsGroup: ${k8s.kibana.conf.securityContext.fsGroup}
+    runAsUser: ${k8s.kibana.conf.securityContext.runAsUser}
+    runAsGroup: ${k8s.kibana.conf.securityContext.runAsGroup}
+# Init
+init:
+  sysctl:
+    enabled: true
+    imageRepository: busybox
+    imageTag: latest
+    imagePullPolicy: IfNotPresent
+  wait:
+    enabled: false
+    imageRepository: digitaljourney.azurecr.io/tools
+    imageTag: "${k8s.kibana.image.tag}"
+    imagePullPolicy: IfNotPresent
+    volumeName: kibana-init
+    configMapName: kibana-init
+    scriptName: wait.json
+    mountPath: /kibana-init
+# Ingress
+ingress:
+  enabled: ${k8s.kibana.ingress.enabled}
+  class: nginx
+  rewriteTarget: ${k8s.kibana.ingress.rewriteTarget}
+  maxBodySize: ${k8s.kibana.ingress.maxBodySize}
+  hosts:
+    - ${k8s.ingress.host}
+  tls:
+    enabled: ${k8s.ingress.tls.enabled}
+    issuer: ${k8s.ingress.tls.issuer}
+    secretName: ${k8s.ingress.tls.secretName}
+  paths:
+    - ${k8s.kibana.ingress.paths.root}
+  altPathsEnabled: ${k8s.kibana.ingress.altPathsEnabled}
+  altPaths: []
+# Service
+service:
+  host: __local__
+  transportExternalPort: ${kibana.service.transportExternalPort}
+  transportInternalPort: ${kibana.service.transportInternalPort}
+  httpExternalPort: ${k8s.kibana.service.httpExternalPort}
+  httpInternalPort: ${k8s.kibana.service.httpInternalPort}
+  readinessProbe:
+    enabled: ${k8s.kibana.service.readinessProbe.enabled}
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 3
+    successThreshold: 1
+    failureThreshold: 6
+  livenessProbe:
+    enabled: ${k8s.kibana.service.livenessProbe.enabled}
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 3
+    successThreshold: 1
+    failureThreshold: 6
+# Persistence
+persistence:
+  storageClass: ${k8s.kibana.persistence.storageClass}
+  accessMode: ReadWriteOnce
+  size: ${k8s.kibana.persistence.size}
+# Secret
+secret:
+  container:
+    name: ${k8s.kibana.secret.container.name}
+    user: ${k8s.kibana.secret.container.user}
+    password: ${k8s.kibana.secret.container.password}
+    email: ${k8s.kibana.secret.container.email}
+  credential:
+    adminUser: ${k8s.kibana.secret.credential.adminUser}
+    adminPassword: ${k8s.kibana.secret.credential.adminPassword}
+    clusterUser: kibana
+    clusterPassword: kibana

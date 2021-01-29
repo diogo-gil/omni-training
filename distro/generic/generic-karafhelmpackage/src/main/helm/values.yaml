@@ -1,0 +1,94 @@
+# Application
+app:
+  name: ${k8s.app.name}
+  component: ${k8s.app.component}
+  replicaCount: ${k8s.app.replicaCount}
+  podManagementPolicy: ${k8s.app.podManagementPolicy}
+  revisionHistoryLimit: ${k8s.app.revisionHistoryLimit}
+  updateStrategy: ${k8s.app.updateStrategy}
+  restartPolicy: ${k8s.app.restartPolicy}
+  terminationGracePeriodSeconds: ${k8s.app.terminationGracePeriodSeconds}
+  antiAffinity: ${k8s.app.antiAffinity}
+# Image
+image:
+  name: ${k8s.image.name}
+  repository: ${k8s.image.repository}
+  tag: "${k8s.image.tag}"
+  pullPolicy: ${k8s.image.pullPolicy}
+# Conf
+conf:
+  timezone: ${k8s.conf.timezone}
+  minMem: ${k8s.conf.minMem}
+  maxMem: ${k8s.conf.maxMem}
+  cleanAll: ${k8s.conf.cleanAll}
+  cleanCache: ${k8s.conf.cleanCache}
+  customOpts: "${k8s.conf.customOpts}"
+  m2Profile: "${k8s.conf.m2Profile}"
+  m2Settings: "${k8s.conf.m2Settings}"
+  m2MirrorUrl: "${k8s.conf.m2MirrorUrl}"
+  m2MirrorMirrorOf: "${k8s.conf.m2MirrorMirrorOf}"
+  cellar:
+    group: ${k8s.conf.cellar.group}
+    bundleSync: ${k8s.conf.cellar.bundleSync}
+    configSync: ${k8s.conf.cellar.configSync}
+    featureSync: ${k8s.conf.cellar.featureSync}
+    producer: ${k8s.conf.cellar.producer}
+    consumer: ${k8s.conf.cellar.consumer}
+    bundleEventHandler: ${k8s.conf.cellar.bundleEventHandler}
+    configurationEventHandler: ${k8s.conf.cellar.configurationEventHandler}
+    featureEventHandler: ${k8s.conf.cellar.featureEventHandler}
+    remoteServiceCallHandler: ${k8s.conf.cellar.remoteServiceCallHandler}
+    clusterEventHandler: ${k8s.conf.cellar.clusterEventHandler}
+  webconsole:
+    path: ${k8s.conf.webconsole.path}
+# Ingress
+ingress:
+  enabled: ${k8s.ingress.enabled}
+  class: ${k8s.ingress.class}
+  host: ${k8s.ingress.host}
+  hosts: []
+  tls:
+    enabled: ${k8s.ingress.tls.enabled}
+    issuer: ${k8s.ingress.tls.issuer}
+  rewriteTarget: ${k8s.ingress.rewriteTarget}
+  path: ${k8s.ingress.path}
+# Service
+service:
+  httpExternalPort: ${k8s.service.httpExternalPort}
+  httpInternalPort: ${k8s.service.httpInternalPort}
+  sshExternalPort: ${k8s.service.sshExternalPort}
+  sshInternalPort: ${k8s.service.sshInternalPort}
+  rmiServerExternalPort: ${k8s.service.rmiServerExternalPort}
+  rmiServerInternalPort: ${k8s.service.rmiServerInternalPort}
+  rmiRegistryExternalPort: ${k8s.service.rmiRegistryExternalPort}
+  rmiRegistryInternalPort: ${k8s.service.rmiRegistryInternalPort}
+  context: ${k8s.service.context}
+  readinessProbe:
+    enabled: ${k8s.service.readinessProbe.enabled}
+    initialDelaySeconds: ${k8s.service.readinessProbe.initialDelaySeconds}
+    periodSeconds: ${k8s.service.readinessProbe.periodSeconds}
+    timeoutSeconds: ${k8s.service.readinessProbe.timeoutSeconds}
+    successThreshold: ${k8s.service.readinessProbe.successThreshold}
+    failureThreshold: ${k8s.service.readinessProbe.failureThreshold}
+  livenessProbe:
+    enabled: ${k8s.service.livenessProbe.enabled}
+    initialDelaySeconds: ${k8s.service.livenessProbe.initialDelaySeconds}
+    periodSeconds: ${k8s.service.livenessProbe.periodSeconds}
+    timeoutSeconds: ${k8s.service.livenessProbe.timeoutSeconds}
+    successThreshold: ${k8s.service.livenessProbe.successThreshold}
+    failureThreshold: ${k8s.service.livenessProbe.failureThreshold}
+# Persistence
+persistence:
+  storageClass: ${k8s.persistence.storageClass}
+  accessMode: ${k8s.persistence.accessMode}
+  size: ${k8s.persistence.size}
+# Secret
+secret:
+  registry:
+    name: ${k8s.secret.registry.name}
+    user: ${k8s.secret.registry.user}
+    password: ${k8s.secret.registry.password}
+    email: ${k8s.secret.registry.email}
+  credential:
+    adminUser: ${k8s.secret.credential.adminUser}
+    adminPassword: ${k8s.secret.credential.adminPassword}

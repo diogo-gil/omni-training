@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
+<booleanAttribute key="M2_DEBUG_OUTPUT" value="false"/>
+<stringAttribute key="M2_GOALS" value="archetype:generate -B"/>
+<booleanAttribute key="M2_NON_RECURSIVE" value="false"/>
+<booleanAttribute key="M2_OFFLINE" value="false"/>
+<stringAttribute key="M2_PROFILES" value=""/>
+<listAttribute key="M2_PROPERTIES">
+<listEntry value="archetypeGroupId=com.celfocus.platform.tooling.archetypes"/>
+<listEntry value="archetypeArtifactId=rs-spi-archetype"/>
+<listEntry value="projectGroup=omni"/>
+<listEntry value="projectCode=telco"/>
+<listEntry value="service=${string_prompt:service:SampleService}"/>
+<listEntry value="groupId=com.celfocus.omnichannel.telco"/>
+<listEntry value="artifactId=${string_prompt:artifactId:sampleservice}"/>
+<listEntry value="version=1.0.0-SNAPSHOT"/>
+<listEntry value="distroVersion=1.0.0-SNAPSHOT"/>
+<listEntry value="parentDistroGroupId=com.celfocus.omnichannel.telco.plugins"/>
+<listEntry value="parentDistroArtifactId=distro"/>
+<listEntry value="parentDistroVersion=1.0.1-SNAPSHOT"/>
+<listEntry value="rootArtifactDescription=${string_prompt:description:Sample Microservice}"/>
+<listEntry value="withCommonProject=true"/>
+</listAttribute>
+<stringAttribute key="M2_RUNTIME" value="EMBEDDED"/>
+<booleanAttribute key="M2_SKIP_TESTS" value="false"/>
+<intAttribute key="M2_THREADS" value="1"/>
+<booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="false"/>
+<stringAttribute key="M2_USER_SETTINGS" value=""/>
+<booleanAttribute key="M2_WORKSPACE_RESOLUTION" value="false"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk18"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc}"/>
+</launchConfiguration>

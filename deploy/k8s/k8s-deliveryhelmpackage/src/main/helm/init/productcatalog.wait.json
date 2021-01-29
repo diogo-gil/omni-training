@@ -1,0 +1,9 @@
+[
+  {
+		"name": "Postgres",
+		"type": "SOCKET",
+		"address": "${k8s.postgres.service.name}:${k8s.postgres.service.externalPort}",
+		"retries": 50,
+		"delay": 10
+	}
+]
