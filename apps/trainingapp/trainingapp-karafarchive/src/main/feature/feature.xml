@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="omni-telco-trainingapp-modules-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+<!-- Added necessary modules repositories here -->
+<!-- Example for UAM, variable is defined in pom 
+	<repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
+-->
+	<feature name="trainingapp-modules" description="TrainingApp Modules" version="${project.version}">
+		<feature>standard-cxf-jaxrs-swagger</feature>
+		<feature>cms-mvc</feature>
+<!-- Assuming UAM is needed (or any other module), the API feature must be fetched
+		<feature>uam-api</feature>
+-->
+		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-app/${project.version}</bundle>
+		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-cms/${project.version}</bundle>
+	</feature>
+	
+	<feature name="trainingapp" description="TrainingApp" version="${project.version}">
+		<feature>trainingapp-modules</feature>
+	</feature>
+</features>

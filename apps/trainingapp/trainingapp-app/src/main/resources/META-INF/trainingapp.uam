@@ -1,0 +1,6 @@
+"TRAININGAPP_PERMISSION_ALL" : create permission "trainingapp:*" "Training App full permission";
+"TRAININGAPP_PERMISSION_CREATE" : create permission "trainingapp:create" "Training App create permission";
+"TRAININGAPP_PERMISSION_READ" : create permission "trainingapp:read" "Training App read permission";
+"TRAININGAPP_PERMISSION_UPDATE" : create permission "trainingapp:update" "Training App update permission";
+"TRAININGAPP_PERMISSION_DELETE" : create permission "trainingapp:delete" "Training App delete permission";
+"TRAININGAPP_PERMISSION_EXECUTE" : create permission "trainingapp:execute" "Training App execute permission";

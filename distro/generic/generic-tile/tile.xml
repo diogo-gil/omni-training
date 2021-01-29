@@ -45,6 +45,7 @@
                             <dependency>mvn:com.celfocus.omnichannel.telco.apps/documentmanagementapp-karafarchive/${telco.apps.documentmanagementapp.version}/kar/archive</dependency>
                             <dependency>mvn:com.celfocus.omnichannel.telco.apps/invoiceandpayment-karafarchive/${telco.apps.invoiceandpayment.version}/kar/archive</dependency>
                             <dependency>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-karafarchive/${omni.telco.modules.trainingmicroservice.version}/kar/archive</dependency>
+                            <dependency>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-karafarchive/${omni.telco.apps.trainingapp.version}/kar/archive</dependency>
                         </dependencies>
                     </configuration>
                 </plugin>

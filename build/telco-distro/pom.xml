@@ -59,7 +59,7 @@
         <!-- ###########     APPS MANAGEMENT    ############      -->
         <!-- OVERRIDES -->
         <telco.apps.telcobase.version>1.0.3</telco.apps.telcobase.version>
-        <telco.modules.trainingmicroservice.version>1.0.0-SNAPSHOT</telco.modules.trainingmicroservice.version>        
+        <telco.modules.trainingmicroservice.version>1.0.0-SNAPSHOT</telco.modules.trainingmicroservice.version>
         <!-- ###########   OVERRIDE MANAGEMENT    ############      -->
         <fs.plugins.distro.version>2.5.1</fs.plugins.distro.version>
         <!-- ###############################################      -->
@@ -77,13 +77,17 @@
         <tile.omnichannel.telco.distro.cms.coordinates>com.celfocus.omnichannel.telco.distro.cms:cms-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.cms.coordinates>
         <tile.omnichannel.telco.distro.generic.coordinates>com.celfocus.omnichannel.telco.distro.generic:generic-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.generic.coordinates>
         <tile.omnichannel.telco.distro.aem.coordinates>com.celfocus.omnichannel.telco.distro.aem:aem-tile:${com.celfocus.omnichannel.telco.version}</tile.omnichannel.telco.distro.aem.coordinates>
-		<!--  Training Microservice -->
+        <!--  Training Microservice -->
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-entity.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-entity.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-service-api.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-service-api.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-service-ri.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-service-ri.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-api.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-api.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-ri.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-ri.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-karafarchive.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-karafarchive.version>
+        <omni.telco.apps.trainingapp.version>1.0.0-SNAPSHOT</omni.telco.apps.trainingapp.version>
+        <lib.com.celfocus.omnichannel.telco.apps.trainingapp-app.version>${omni.telco.apps.trainingapp.version}</lib.com.celfocus.omnichannel.telco.apps.trainingapp-app.version>
+        <lib.com.celfocus.omnichannel.telco.apps.trainingapp-cms.version>${omni.telco.apps.trainingapp.version}</lib.com.celfocus.omnichannel.telco.apps.trainingapp-cms.version>
+        <lib.com.celfocus.omnichannel.telco.apps.trainingapp-karafarchive.version>${omni.telco.apps.trainingapp.version}</lib.com.celfocus.omnichannel.telco.apps.trainingapp-karafarchive.version>
     </properties>
     <!-- ====================================================================== -->
     <!-- = D E P E N D E N C Y M A N A G E M E N T =========================== -->
@@ -138,6 +142,22 @@
                 <groupId>com.celfocus.omnichannel.telco.modules</groupId>
                 <artifactId>trainingmicroservice-karafarchive</artifactId>
                 <version>${lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-karafarchive.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.celfocus.omnichannel.telco.apps</groupId>
+                <artifactId>trainingapp-app</artifactId>
+                <version>${lib.com.celfocus.omnichannel.telco.apps.trainingapp-app.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.celfocus.omnichannel.telco.apps</groupId>
+                <artifactId>trainingapp-cms</artifactId>
+                <version>${lib.com.celfocus.omnichannel.telco.apps.trainingapp-cms.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.celfocus.omnichannel.telco.apps</groupId>
+                <artifactId>trainingapp-karafarchive</artifactId>
+                <version>${lib.com.celfocus.omnichannel.telco.apps.trainingapp-karafarchive.version}</version>
+                <type>kar</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
