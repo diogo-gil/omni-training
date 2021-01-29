@@ -187,6 +187,13 @@
 			<artifactId>rsprovider-core</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.celfocus.omnichannel.telco.modules</groupId>
+			<artifactId>trainingmicroservice-service-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>		
+		
 	</dependencies>
 
 </project>

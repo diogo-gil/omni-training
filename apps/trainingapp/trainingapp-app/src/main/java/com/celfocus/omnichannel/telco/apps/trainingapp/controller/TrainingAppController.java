@@ -23,16 +23,25 @@
  */
 package com.celfocus.omnichannel.telco.apps.trainingapp.controller;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.osgi.service.component.annotations.Component;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.celfocus.omnichannel.telco.apps.trainingapp.AppProperties;
+import com.celfocus.omnichannel.telco.apps.trainingapp.dto.Dish;
+import com.celfocus.omnichannel.telco.apps.trainingapp.mapper.TrainingAppMapper;
+import com.celfocus.omnichannel.telco.modules.trainingmicroservice.service.api.dto.DishDTO;
 
 import io.digitaljourney.platform.modules.commons.type.HttpStatusCode;
 import io.digitaljourney.platform.modules.ws.rs.api.RSProperties;
@@ -107,16 +116,29 @@ public class TrainingAppController extends AbstractAppController {
 	// nothing here we just fake some endpoints
 	/** Base CXF path */
 	public static final String BASE_CXF_PATH = "cms";
-
-	/**
-	 * Fake endpoint to document resources
-	 */
-	@GET
-	@Path("/")
-	@ApiOperation(value = "Endpoint description", notes = "This is a mock endpoint")
+	
+	@POST
+	@Path("/dish")
+	@ApiOperation(value = "Create Dish", notes = "endpoint to create new dish")
 	@ExternalDocs(url = BASE_CXF_PATH + AppProperties.ADDRESS
-			+ "/api-docs?url=../swagger.json", value = "Endpoint description")
-	public void getOauth() {
-		// no op
+	+ "/api-docs?url=../swagger.json", value = "Create Dish")
+	@ResponseBody
+	public ResponseEntity<Dish> addDish(@RequestBody Dish dish){
+		
+		DishDTO newDish = TrainingAppMapper.INSTANCE.toDishDTO(dish);
+		DishDTO createdDishDTO = getCoreAgent().addDish(newDish).get();
+		
+		return ResponseEntity.ok(TrainingAppMapper.INSTANCE.toDish(createdDishDTO));
 	}
+	
+	@GET
+	@Path("/dishes")
+	@ApiOperation(value = "List Dish", notes = "endpoint to list dishes")
+	@ExternalDocs(url = BASE_CXF_PATH + AppProperties.ADDRESS
+	+ "/api-docs?url=../swagger.json", value = "List Dishes")
+	@ResponseBody
+	public ResponseEntity<List<Dish>> getAllDishes(){
+		return ResponseEntity.ok(TrainingAppMapper.INSTANCE.toListDish(getCoreAgent().getDishes()));
+	}	
+	
 }

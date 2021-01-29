@@ -60,6 +60,7 @@
         <!-- OVERRIDES -->
         <telco.apps.telcobase.version>1.0.3</telco.apps.telcobase.version>
         <telco.modules.trainingmicroservice.version>1.0.0-SNAPSHOT</telco.modules.trainingmicroservice.version>
+        <telco.apps.trainingapp.version>1.0.0-SNAPSHOT</telco.apps.trainingapp.version>
         <!-- ###########   OVERRIDE MANAGEMENT    ############      -->
         <fs.plugins.distro.version>2.5.1</fs.plugins.distro.version>
         <!-- ###############################################      -->
@@ -84,7 +85,7 @@
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-api.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-api.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-ri.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-data-ri.version>
         <lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-karafarchive.version>${omni.telco.modules.trainingmicroservice.version}</lib.com.celfocus.omnichannel.telco.modules.trainingmicroservice-karafarchive.version>
-        <omni.telco.apps.trainingapp.version>1.0.0-SNAPSHOT</omni.telco.apps.trainingapp.version>
+        <!--  Training App -->
         <lib.com.celfocus.omnichannel.telco.apps.trainingapp-app.version>${omni.telco.apps.trainingapp.version}</lib.com.celfocus.omnichannel.telco.apps.trainingapp-app.version>
         <lib.com.celfocus.omnichannel.telco.apps.trainingapp-cms.version>${omni.telco.apps.trainingapp.version}</lib.com.celfocus.omnichannel.telco.apps.trainingapp-cms.version>
         <lib.com.celfocus.omnichannel.telco.apps.trainingapp-karafarchive.version>${omni.telco.apps.trainingapp.version}</lib.com.celfocus.omnichannel.telco.apps.trainingapp-karafarchive.version>

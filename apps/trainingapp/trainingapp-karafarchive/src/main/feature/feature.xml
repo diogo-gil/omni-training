@@ -7,9 +7,8 @@
 	<feature name="trainingapp-modules" description="TrainingApp Modules" version="${project.version}">
 		<feature>standard-cxf-jaxrs-swagger</feature>
 		<feature>cms-mvc</feature>
-<!-- Assuming UAM is needed (or any other module), the API feature must be fetched
-		<feature>uam-api</feature>
--->
+		<feature>trainingmicroservice-api</feature>
+		
 		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-app/${project.version}</bundle>
 		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-cms/${project.version}</bundle>
 	</feature>

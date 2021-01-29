@@ -17,7 +17,7 @@
                             <artifactId>karaf-maven-plugin</artifactId>
                             <configuration>
                                 <dependencies combine.children="append">
-                                    <!-- Add additional dependencies here -->
+                                    <!-- Add additional dependencies here -->                                    
                                 </dependencies>
                             </configuration>
                         </plugin>
@@ -50,8 +50,10 @@
                                     <!-- Telco Plugins Modules -->
                                     <!-- Telco Plugins Apps -->
                                     <!-- Telco Modules -->
+                                    <repository>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-karafarchive/${telco.modules.trainingmicroservice.version}/xml/features</repository>
                                     <!-- Telco Apps -->
                                     <repository>mvn:com.celfocus.omnichannel.telco.apps/telcobase-karafarchive/${telco.apps.telcobase.version}/xml/features</repository>
+                                    <repository>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-karafarchive/${telco.apps.trainingapp.version}/xml/features</repository>
                                 </bootRepositories>
                                 <bootFeatures>
                                     <!-- platform modules -->
@@ -99,6 +101,7 @@
                                     <!-- Telco Modules -->
                                     <!-- Telco Apps -->
                                     <feature>telcobase</feature>
+                                    <feature>trainingapp</feature>
                                 </bootFeatures>
                                 <installedFeatures/>
                                 <installedBundles>
@@ -196,6 +199,7 @@
                                     <!-- Telco Modules -->
                                     <!-- Telco Apps -->
                                     <repository>mvn:com.celfocus.omnichannel.telco.apps/telcobase-karafarchive/${telco.apps.telcobase.version}/xml/features</repository>
+                                    <repository>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-karafarchive/${telco.apps.trainingapp.version}/xml/features</repository>
                                 </bootRepositories>
                                 <bootFeatures>
                                     <!-- platform modules -->
@@ -243,6 +247,7 @@
                                     <!-- Telco Modules -->
                                     <!-- Telco Apps -->
                                     <feature>telcobase</feature>
+                                    <feature>trainingapp</feature>
                                 </bootFeatures>
                                 <installedFeatures/>
                                 <installedBundles>
@@ -304,7 +309,7 @@
                     <artifactId>karaf-maven-plugin</artifactId>
                     <configuration>
                         <dependencies>
-                            <dependency>mvn:com.celfocus.omnichannel.telco.apps/trainingapp-karafarchive/${omni.telco.apps.trainingapp.version}/kar/archive</dependency>
+                            
                         </dependencies>
                     </configuration>
                 </plugin>
