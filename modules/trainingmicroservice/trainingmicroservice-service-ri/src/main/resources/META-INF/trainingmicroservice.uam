@@ -1,0 +1,6 @@
+"TRAININGMICROSERVICE_PERMISSION_ALL" : create permission "trainingmicroservice:*" "Training Microservice full permission";
+"TRAININGMICROSERVICE_PERMISSION_CREATE" : create permission "trainingmicroservice:create" "Training Microservice create permission";
+"TRAININGMICROSERVICE_PERMISSION_READ" : create permission "trainingmicroservice:read" "Training Microservice read permission";
+"TRAININGMICROSERVICE_PERMISSION_UPDATE" : create permission "trainingmicroservice:update" "Training Microservice update permission";
+"TRAININGMICROSERVICE_PERMISSION_DELETE" : create permission "trainingmicroservice:delete" "Training Microservice delete permission";
+"TRAININGMICROSERVICE_PERMISSION_EXECUTE" : create permission "trainingmicroservice:execute" "Training Microservice execute permission";

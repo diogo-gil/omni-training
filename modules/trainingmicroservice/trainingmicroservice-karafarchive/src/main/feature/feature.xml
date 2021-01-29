@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features 
+	name="omni-telco-trainingmicroservice-modules-${project.version}"
+	xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+
+	<feature name="trainingmicroservice-api" description="TrainingMicroservice API" version="${project.version}">
+		<feature>base-ws-rs</feature>
+		<bundle>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-service-api/${project.version}</bundle>
+	</feature>
+
+	<feature name="trainingmicroservice-modules"
+		description="TrainingMicroservice Modules" version="${project.version}">
+		<feature>trainingmicroservice-api</feature>
+		<bundle>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-data-ri/${project.version}</bundle>
+		<bundle>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-entity/${project.version}</bundle>
+		<bundle>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-service-ri/${project.version}</bundle>
+	</feature>
+
+	<feature name="trainingmicroservice" description="TrainingMicroservice" version="${project.version}">
+			<feature>trainingmicroservice-modules</feature>
+	</feature>
+</features>

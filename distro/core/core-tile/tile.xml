@@ -35,6 +35,7 @@
                             <repository>mvn:io.digitaljourney.platform.plugins.modules/journeyblueprint-karafarchive/${platform.plugins.modules.journeyblueprint.version}/xml/features</repository>
                             <!-- Telco Plugins Modules -->
                             <!-- Telco Modules -->
+							<dependency>mvn:com.celfocus.omnichannel.telco.modules/trainingmicroservice-karafarchive/${telco.modules.trainingmicroservice.version}/xml/features</dependency>                            
                         </bootRepositories>
                         <bootFeatures>
                             <!-- Platform Modules -->
@@ -77,6 +78,7 @@
                             <feature>journeyworkflowengine-gateway-rest-cxf</feature>
                             <!-- Telco Plugins Modules -->
                             <!-- Telco Modules -->
+                            <feature>trainingmicroservice</feature>
                         </bootFeatures>
                         <installedFeatures>
                             <feature>core-scheduling</feature>
