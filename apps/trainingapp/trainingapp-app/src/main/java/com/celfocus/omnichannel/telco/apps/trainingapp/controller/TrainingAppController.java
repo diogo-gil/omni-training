@@ -32,10 +32,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.osgi.service.component.annotations.Component;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.celfocus.omnichannel.telco.apps.trainingapp.AppProperties;
@@ -65,6 +68,7 @@ import io.swagger.annotations.SwaggerDefinition;
  * Base Training App Resource, this is only used for documentation purposes.
  * *
  */
+@Controller
 @Component(
 	service = {TrainingAppController.class}
 )
@@ -119,11 +123,12 @@ public class TrainingAppController extends AbstractAppController {
 	
 	@POST
 	@Path("/dish")
+	@RequestMapping(method = RequestMethod.POST, value = "/dish")
 	@ApiOperation(value = "Create Dish", notes = "endpoint to create new dish")
 	@ExternalDocs(url = BASE_CXF_PATH + AppProperties.ADDRESS
 	+ "/api-docs?url=../swagger.json", value = "Create Dish")
-	@ResponseBody
-	public ResponseEntity<Dish> addDish(@RequestBody Dish dish){
+	@RequiresPermissions(AppProperties.PERMISSION_CREATE)
+	public @ResponseBody ResponseEntity<Dish> addDish(@RequestBody Dish dish){
 		
 		DishDTO newDish = TrainingAppMapper.INSTANCE.toDishDTO(dish);
 		DishDTO createdDishDTO = getCoreAgent().addDish(newDish).get();
@@ -133,11 +138,12 @@ public class TrainingAppController extends AbstractAppController {
 	
 	@GET
 	@Path("/dishes")
+	@RequestMapping(method = RequestMethod.GET, value = "/dishes")
 	@ApiOperation(value = "List Dish", notes = "endpoint to list dishes")
 	@ExternalDocs(url = BASE_CXF_PATH + AppProperties.ADDRESS
 	+ "/api-docs?url=../swagger.json", value = "List Dishes")
-	@ResponseBody
-	public ResponseEntity<List<Dish>> getAllDishes(){
+	@RequiresPermissions(AppProperties.PERMISSION_READ)
+	public @ResponseBody ResponseEntity<List<Dish>> getAllDishes(){
 		return ResponseEntity.ok(TrainingAppMapper.INSTANCE.toListDish(getCoreAgent().getDishes()));
 	}	
 	
