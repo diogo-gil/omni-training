@@ -15,5 +15,6 @@
     <modules>
         <module>../../apps/telcobase/telcobase</module>
         <module>../../apps/trainingapp/trainingapp</module>
+        <module>../../apps/trainingappjwe/trainingappjwe</module>
     </modules>
 </project>

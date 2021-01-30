@@ -1,0 +1,6 @@
+"TRAININGAPPJWE_PERMISSION_ALL" : create permission "trainingappjwe:*" "Training App with JWE integration full permission";
+"TRAININGAPPJWE_PERMISSION_CREATE" : create permission "trainingappjwe:create" "Training App with JWE integration create permission";
+"TRAININGAPPJWE_PERMISSION_READ" : create permission "trainingappjwe:read" "Training App with JWE integration read permission";
+"TRAININGAPPJWE_PERMISSION_UPDATE" : create permission "trainingappjwe:update" "Training App with JWE integration update permission";
+"TRAININGAPPJWE_PERMISSION_DELETE" : create permission "trainingappjwe:delete" "Training App with JWE integration delete permission";
+"TRAININGAPPJWE_PERMISSION_EXECUTE" : create permission "trainingappjwe:execute" "Training App with JWE integration execute permission";

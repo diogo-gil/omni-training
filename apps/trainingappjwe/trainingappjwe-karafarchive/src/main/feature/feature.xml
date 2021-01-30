@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="omni-telco-trainingappjwe-modules-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+	<repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
+	<feature name="trainingappjwe-modules" description="TrainingAppJWE Modules" version="${project.version}">
+		<feature>cms-mvc</feature>
+		<feature>uam-api</feature>
+		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingappjwe-app/${project.version}</bundle>
+		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingappjwe-cms/${project.version}</bundle>
+	</feature>
+	
+	<feature name="trainingappjwe" description="TrainingAppJWE" version="${project.version}">
+		<feature>trainingappjwe-modules</feature>
+	</feature>
+</features>

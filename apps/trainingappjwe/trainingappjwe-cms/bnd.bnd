@@ -1,0 +1,7 @@
+Bundle-SymbolicName: ${bundle.symbolicName}
+Bundle-Name: ${bundle.name}
+Bundle-Version: ${parsedVersion.plainVersion}${if;${parsedVersion.isSnapshot};.${tstamp}}
+Bundle-Category: ${bundle.category}
+Sling-Initial-Content: \
+	SLING-INF/content/libs/trainingappjwe;overwrite:=true;ignoreImportProviders:=json;path:=/libs/trainingappjwe,\
+	SLING-INF/content/libs/trainingappjwe-data;overwrite:=true;path:=/libs/trainingappjwe-data

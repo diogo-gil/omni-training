@@ -1,0 +1,6 @@
+"SAMPLEJOURNEY_PERMISSION_ALL" : create permission "samplejourney:*" "Sample Journey Description full permission";
+"SAMPLEJOURNEY_PERMISSION_CREATE" : create permission "samplejourney:create" "Sample Journey Description create permission";
+"SAMPLEJOURNEY_PERMISSION_READ" : create permission "samplejourney:read" "Sample Journey Description read permission";
+"SAMPLEJOURNEY_PERMISSION_UPDATE" : create permission "samplejourney:update" "Sample Journey Description update permission";
+"SAMPLEJOURNEY_PERMISSION_DELETE" : create permission "samplejourney:delete" "Sample Journey Description delete permission";
+"SAMPLEJOURNEY_PERMISSION_EXECUTE" : create permission "samplejourney:execute" "Sample Journey Description execute permission";
