@@ -21,15 +21,6 @@ import io.digitaljourney.platform.plugins.modules.journeyworkflowengine.gateway.
 import io.digitaljourney.platform.plugins.modules.journeyworkflowengine.gateway.aspect.session.JourneySession;
 import io.digitaljourney.platform.plugins.providers.rsprovider.annotations.CmsRsProvider;
 
-/**
- * Simple Journey with 3 APIs:
- * - Create
- * - Read
- * - Update
- * - Finish
- * 
- * The matching journey map is included in this project and can be imported into Journey Designer (custom_journey.zip)
- */
 @Controller
 @Component
 @CmsRsProvider(value = AppProperties.ADDRESS)
