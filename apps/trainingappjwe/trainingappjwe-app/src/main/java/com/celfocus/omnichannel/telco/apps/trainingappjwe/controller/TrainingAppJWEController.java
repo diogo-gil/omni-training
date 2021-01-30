@@ -59,7 +59,7 @@ public class TrainingAppJWEController extends AbstractAppController implements J
 	/**
 	 * Retrieves existing dishes with a given ID
 	 */
-	@JourneyMethod(value = "ReadProcess")
+	@JourneyMethod(value = "getDishes")
 	@RequestMapping(value = "/{instanceId}/dishes", method = RequestMethod.GET)
 	public TrainingDTO getAllDishes(@JourneyReference Long instanceId) {
 		TrainingInstance instance = JourneySession.getInstance(this);
