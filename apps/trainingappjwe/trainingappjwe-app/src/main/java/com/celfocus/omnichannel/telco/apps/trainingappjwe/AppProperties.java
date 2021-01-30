@@ -47,6 +47,6 @@ public final class AppProperties extends JourneyMVCProperties {
 
 	public static final String TRAININGAPPJWE000 = "TRAININGAPPJWE000";
 	
-	public static final String JOURNEY_NAME = "CUSTOM_JOURNEY";
+	public static final String JOURNEY_NAME = "TRAININGJOURNEY";
 	public static final int JOURNEY_VERSION = 1;
 }

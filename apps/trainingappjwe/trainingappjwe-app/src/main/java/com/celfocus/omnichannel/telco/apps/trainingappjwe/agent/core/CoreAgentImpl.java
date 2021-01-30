@@ -23,6 +23,15 @@
  */
 package com.celfocus.omnichannel.telco.apps.trainingappjwe.agent.core;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -31,9 +40,12 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.metatype.annotations.Designate;
 
-import io.digitaljourney.platform.modules.mvc.api.agent.AbstractCoreAgent;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppContext;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppProperties;
+import com.celfocus.omnichannel.telco.modules.trainingmicroservice.service.api.TrainingMicroserviceResource;
+import com.celfocus.omnichannel.telco.modules.trainingmicroservice.service.api.dto.DishDTO;
+
+import io.digitaljourney.platform.modules.mvc.api.agent.AbstractCoreAgent;
 
 // @formatter:off
 @Component(
@@ -53,4 +65,46 @@ public class CoreAgentImpl extends AbstractCoreAgent<AppContext, CoreAgentConfig
 	public void activate(ComponentContext ctx, CoreAgentConfig config) {
 		prepare(ctx, config);
 	}
+	
+	@Reference
+	private volatile TrainingMicroserviceResource trainingMicroserviceResource;
+	
+	
+	public List<DishDTO> getDishes() {
+		
+		Response response = trainingMicroserviceResource.listDishes();
+		
+		if (response.getStatus() != Status.OK.getStatusCode() ||
+	    		(response.getStatus() == Status.OK.getStatusCode() && !response.hasEntity())) {
+
+	    	return Collections.emptyList();
+	    }
+		
+		ArrayList<DishDTO> dishesList = response.readEntity(new GenericType<ArrayList<DishDTO>>() { });
+		
+	    if (dishesList == null || dishesList.isEmpty()) {
+	    	return Collections.emptyList();
+       	}
+	    
+	    return dishesList;
+	}
+	
+	public Optional<DishDTO> addDish(DishDTO body) {
+		
+		Response response = trainingMicroserviceResource.createDish(body);
+		
+		if (response.getStatus() != Status.OK.getStatusCode() ||
+	    		(response.getStatus() == Status.OK.getStatusCode() && !response.hasEntity())) {
+
+	    	return Optional.empty();
+	    }
+		
+		DishDTO dish = response.readEntity(new GenericType<DishDTO>() { });
+		
+	    if (dish == null) {
+	     	return Optional.empty();
+       	}
+	    
+	    return Optional.of(dish);
+	}	
 }

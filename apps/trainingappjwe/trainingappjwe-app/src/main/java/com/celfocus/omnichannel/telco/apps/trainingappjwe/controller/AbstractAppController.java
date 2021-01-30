@@ -26,13 +26,16 @@ package com.celfocus.omnichannel.telco.apps.trainingappjwe.controller;
 import org.eclipse.gemini.blueprint.extensions.annotation.ServiceReference;
 
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppContext;
+import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppProperties;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.agent.core.CoreAgentImpl;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.agent.repository.RepositoryAgentImpl;
+import com.celfocus.omnichannel.telco.apps.trainingappjwe.instance.TrainingInstance;
 
 import io.digitaljourney.platform.plugins.modules.journeyworkflowengine.api.JourneyWorkflowEngineResource;
+import io.digitaljourney.platform.plugins.modules.journeyworkflowengine.gateway.aspect.JourneyProcess;
 import io.digitaljourney.platform.plugins.modules.journeyworkflowengine.gateway.aspect.controller.AbstractJourneyController;
 
-public abstract class AbstractAppController extends AbstractJourneyController<AppContext> {
+public abstract class AbstractAppController extends AbstractJourneyController<AppContext> implements JourneyProcess<TrainingInstance> {
 
 	@ServiceReference
 	private AppContext ctx;
@@ -60,4 +63,19 @@ public abstract class AbstractAppController extends AbstractJourneyController<Ap
 	protected CoreAgentImpl getCoreAgent() {
 		return this.coreAgent;
 	}
+	
+	@Override
+	public String journeyName() {
+		return AppProperties.JOURNEY_NAME;
+	}
+
+	@Override
+	public int majorVersion() {
+		return AppProperties.JOURNEY_VERSION;
+	}
+
+	@Override
+	public Class<TrainingInstance> getInstanceClass() {
+		return TrainingInstance.class;
+	}	
 }

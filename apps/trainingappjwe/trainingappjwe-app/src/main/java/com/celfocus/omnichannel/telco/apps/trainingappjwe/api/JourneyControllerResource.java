@@ -9,10 +9,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.osgi.annotation.versioning.ProviderType;
 
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppProperties;
-import com.celfocus.omnichannel.telco.apps.trainingappjwe.dto.CustomJourneyDTO;
+import com.celfocus.omnichannel.telco.apps.trainingappjwe.dto.Dish;
+import com.celfocus.omnichannel.telco.apps.trainingappjwe.dto.TrainingDTO;
 
 import io.digitaljourney.platform.modules.commons.type.HttpStatusCode;
 import io.digitaljourney.platform.modules.ws.rs.api.RSProperties;
@@ -61,45 +63,37 @@ public interface JourneyControllerResource {
 
 	@POST
 	@Path("/")
-	@ApiOperation(value = "Creates a process", notes = "Creates a new process instance", response = CustomJourneyDTO.class)
+	@ApiOperation(value = "Creates a process", notes = "Creates a new process instance", response = TrainingDTO.class)
+	@RequiresPermissions(AppProperties.PERMISSION_CREATE)	
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, response = CustomJourneyDTO.class, message = "OK"),
+			@ApiResponse(code = 200, response = TrainingDTO.class, message = "OK"),
 			@ApiResponse(code = 404, message = "Not Found"),
 			@ApiResponse(code = 500, message = "Internal Server Error")
 	})
-	public CustomJourneyDTO create();
+	public TrainingDTO createDishes(Dish dish);
 
 	@GET
-	@Path("/{instanceId}")
-	@ApiOperation(value = "Reads a process", notes = "Reads an existing process instance", response = CustomJourneyDTO.class)
+	@Path("/{instanceId}/dishes")
+	@ApiOperation(value = "Reads a process", notes = "Reads an existing process instance", response = TrainingDTO.class)
+	@RequiresPermissions(AppProperties.PERMISSION_READ)	
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, response = CustomJourneyDTO.class, message = "OK"),
+			@ApiResponse(code = 200, response = TrainingDTO.class, message = "OK"),
 			@ApiResponse(code = 404, message = "Not Found"),
 			@ApiResponse(code = 500, message = "Internal Server Error")
 	})
-	public CustomJourneyDTO read(
+	public TrainingDTO getAllDishes(
 			@ApiParam(value = "The unique identifier of the process instance", required = true, example = "1") @PathParam("instanceId") Long instanceId);
 	
-	@PUT
-	@Path("/{instanceId}/custom")
-	@ApiOperation(value = "Change custom field", notes = "Changes custom field of an existing process instance", response = CustomJourneyDTO.class)
-	@ApiResponses(value = {
-			@ApiResponse(code = 200, response = CustomJourneyDTO.class, message = "OK"),
-			@ApiResponse(code = 404, message = "Not Found"),
-			@ApiResponse(code = 500, message = "Internal Server Error")
-	})
-	public CustomJourneyDTO changeField(
-			@ApiParam(value = "The unique identifier of the process instance", required = true, example = "1") @PathParam("instanceId") Long instanceId,
-			@ApiParam(value = "New custom field value", required = true, example = "sample1") String value);
 	
 	@PUT
 	@Path("/{instanceId}/finish")
-	@ApiOperation(value = "Finish process", notes = "Finishes the process", response = CustomJourneyDTO.class)
+	@ApiOperation(value = "Finish process", notes = "Finishes the process", response = TrainingDTO.class)
+	@RequiresPermissions(AppProperties.PERMISSION_UPDATE)	
 	@ApiResponses(value = {
-			@ApiResponse(code = 200, response = CustomJourneyDTO.class, message = "OK"),
+			@ApiResponse(code = 200, response = TrainingDTO.class, message = "OK"),
 			@ApiResponse(code = 404, message = "Not Found"),
 			@ApiResponse(code = 500, message = "Internal Server Error")
 	})
-	public CustomJourneyDTO finish(
+	public TrainingDTO finish(
 			@ApiParam(value = "The unique identifier of the process instance", required = true, example = "1") @PathParam("instanceId") Long instanceId);
 }

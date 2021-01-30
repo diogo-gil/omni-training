@@ -25,7 +25,6 @@ package com.celfocus.omnichannel.telco.apps.trainingappjwe.agent.repository;
 
 import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.serviceusermapping.ServiceUserMapped;
-import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
@@ -33,10 +32,11 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.metatype.annotations.Designate;
 
-import io.digitaljourney.platform.modules.jcr.sling.api.dao.BaseSlingDAO;
-import io.digitaljourney.platform.modules.jcr.sling.api.resourceresolver.SlingResorceResolverProvider;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppContext;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.AppProperties;
+
+import io.digitaljourney.platform.modules.jcr.sling.api.dao.BaseSlingDAO;
+import io.digitaljourney.platform.modules.jcr.sling.api.resourceresolver.SlingResorceResolverProvider;
 
 //@formatter:off
 @Component(

@@ -4,6 +4,7 @@
 	<feature name="trainingappjwe-modules" description="TrainingAppJWE Modules" version="${project.version}">
 		<feature>cms-mvc</feature>
 		<feature>uam-api</feature>
+		<feature>trainingmicroservice-api</feature>
 		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingappjwe-app/${project.version}</bundle>
 		<bundle>mvn:com.celfocus.omnichannel.telco.apps/trainingappjwe-cms/${project.version}</bundle>
 	</feature>

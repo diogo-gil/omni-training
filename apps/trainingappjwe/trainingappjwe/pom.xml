@@ -41,7 +41,7 @@
 		<!-- VERSION MANAGEMENT -->
 
 		<!-- APIs -->
-		<platform.plugins.modules.journeyworkflowengine.version>2.1.2</platform.plugins.modules.journeyworkflowengine.version>
+		<!-- <platform.plugins.modules.journeyworkflowengine.version>2.1.2</platform.plugins.modules.journeyworkflowengine.version>-->
 
 		<!-- RS Provider -->
 		<platform.plugins.providers.rsprovider.version>1.0.11</platform.plugins.providers.rsprovider.version>
