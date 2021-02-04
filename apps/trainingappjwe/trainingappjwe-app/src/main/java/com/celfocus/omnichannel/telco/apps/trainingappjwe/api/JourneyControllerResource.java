@@ -62,7 +62,7 @@ import io.swagger.annotations.Tag;
 public interface JourneyControllerResource {
 
 	@POST
-	@Path("/")
+	@Path("/createDish")
 	@ApiOperation(value = "Creates a process", notes = "Creates a new process instance", response = TrainingDTO.class)
 	@RequiresPermissions(AppProperties.PERMISSION_CREATE)	
 	@ApiResponses(value = {
@@ -74,7 +74,7 @@ public interface JourneyControllerResource {
 
 	@GET
 	@Path("/{instanceId}/dishes")
-	@ApiOperation(value = "Reads a process", notes = "Reads an existing process instance", response = TrainingDTO.class)
+	@ApiOperation(value = "Get dishes", notes = "Get Dishes", response = TrainingDTO.class)
 	@RequiresPermissions(AppProperties.PERMISSION_READ)	
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, response = TrainingDTO.class, message = "OK"),
@@ -84,6 +84,31 @@ public interface JourneyControllerResource {
 	public TrainingDTO getAllDishes(
 			@ApiParam(value = "The unique identifier of the process instance", required = true, example = "1") @PathParam("instanceId") Long instanceId);
 	
+	@PUT
+	@Path("/{instanceId}/prepare/{dishId}")
+	@ApiOperation(value = "Prepare Dish", notes = "Prepare Dish", response = TrainingDTO.class)
+	@RequiresPermissions(AppProperties.PERMISSION_READ)	
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, response = TrainingDTO.class, message = "OK"),
+			@ApiResponse(code = 404, message = "Not Found"),
+			@ApiResponse(code = 500, message = "Internal Server Error")
+	})
+	public TrainingDTO prepareDish(
+			@ApiParam(value = "The unique identifier of the process instance", required = true, example = "1") @PathParam("instanceId") Long instanceId,
+			@ApiParam(value = "The unique identifier of the dish", required = true, example = "1") @PathParam("dishId") Long dishId);	
+	
+	@PUT
+	@Path("/{instanceId}/rate/{rateValue}")
+	@ApiOperation(value = "Rate Dish", notes = "Rate Dish", response = TrainingDTO.class)
+	@RequiresPermissions(AppProperties.PERMISSION_READ)	
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, response = TrainingDTO.class, message = "OK"),
+			@ApiResponse(code = 404, message = "Not Found"),
+			@ApiResponse(code = 500, message = "Internal Server Error")
+	})
+	public TrainingDTO rateDish(
+			@ApiParam(value = "The unique identifier of the process instance", required = true, example = "1") @PathParam("instanceId") Long instanceId,
+			@ApiParam(value = "The rate of dish", required = true, example = "1") @PathParam("rateValue") String rate);		
 	
 	@PUT
 	@Path("/{instanceId}/finish")

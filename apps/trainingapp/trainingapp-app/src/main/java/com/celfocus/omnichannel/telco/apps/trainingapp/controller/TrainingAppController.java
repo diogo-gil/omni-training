@@ -33,6 +33,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.osgi.annotation.versioning.ProviderType;
 import org.osgi.service.component.annotations.Component;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -68,6 +69,7 @@ import io.swagger.annotations.SwaggerDefinition;
  * Base Training App Resource, this is only used for documentation purposes.
  * *
  */
+@ProviderType
 @Controller
 @Component(
 	service = {TrainingAppController.class}

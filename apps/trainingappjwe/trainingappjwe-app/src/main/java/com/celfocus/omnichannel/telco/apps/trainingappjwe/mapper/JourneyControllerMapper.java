@@ -11,6 +11,7 @@ import com.celfocus.omnichannel.telco.apps.trainingappjwe.dto.TrainingDTO;
 import com.celfocus.omnichannel.telco.apps.trainingappjwe.instance.TrainingInstance;
 import com.celfocus.omnichannel.telco.modules.trainingmicroservice.service.api.dto.DishDTO;
 
+
 @Mapper
 public interface JourneyControllerMapper {
 	public static final JourneyControllerMapper INSTANCE = Mappers.getMapper(JourneyControllerMapper.class);

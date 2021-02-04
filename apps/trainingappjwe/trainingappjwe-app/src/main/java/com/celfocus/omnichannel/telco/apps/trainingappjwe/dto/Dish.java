@@ -9,6 +9,10 @@ public class Dish {
 	public String dishPrice;
 	
 	public boolean hasPromotion;
+	
+	public String rate;
+	
+	public boolean prepared = false;
 
 	public String getId() {
 		return id;
@@ -41,7 +45,21 @@ public class Dish {
 	public void setHasPromotion(boolean hasPromotion) {
 		this.hasPromotion = hasPromotion;
 	}
-	
-	
 
+	public String getRate() {
+		return rate;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+	public boolean isPrepared() {
+		return prepared;
+	}
+
+	public void setPrepared(boolean isPrepared) {
+		this.prepared = isPrepared;
+	}
+	
 }
