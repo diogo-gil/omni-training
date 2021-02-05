@@ -112,12 +112,7 @@ public class TrainingAppJWEController extends AbstractAppController implements J
 		
 		DishInstance dishes = instance.getDishes().get(0);
 		dishes.setRate(rate);
-		
-		//TrainingDTO trainingDTO = new TrainingDTO();
-		//trainingDTO.dishes.add(dishes);
-
-		//JourneyControllerMapper.INSTANCE.mergeProcess(trainingDTO, instance);		
-		
+				
 		return JourneyControllerMapper.INSTANCE.toProcess(instance);
 	}
 		
