@@ -24,6 +24,7 @@
                             <repository>mvn:io.digitaljourney.platform.plugins.providers/rsprovider-karafarchive/${platform.plugins.providers.rsprovider.version}/xml/features</repository>
                             <repository>mvn:io.digitaljourney.platform.plugins.providers/xmlprovider-karafarchive/${platform.plugins.providers.xmlprovider.version}/xml/features</repository>
                             <!-- Platform plugins -->
+							<repository>mvn:io.digitaljourney.platform.plugins.modules/events-karafarchive/${platform.plugins.modules.events.version}/xml/features</repository>							
                             <repository>mvn:io.digitaljourney.platform.plugins.modules/journeyworkflowengine-karafarchive/${platform.plugins.modules.journeyworkflowengine.version}/xml/features</repository>
                             <repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
                             <repository>mvn:io.digitaljourney.platform.plugins.modules/rulesengine-karafarchive/${platform.plugins.modules.rulesengine.version}/xml/features</repository>
@@ -65,6 +66,7 @@
                             <feature>base-boot-modules</feature>
                             <feature>aries-rsa-discovery-config</feature>
                             <feature>core-boot-modules</feature>
+                            <feature>events-rdb</feature>							
                             <!-- Platform Plugins Modules -->
                             <feature>processcontinuity</feature>
                             <feature>uam</feature>

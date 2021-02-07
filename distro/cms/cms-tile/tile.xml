@@ -30,6 +30,7 @@
                                     <repository>mvn:io.digitaljourney.platform.plugins.providers/rsprovider-karafarchive/${platform.plugins.providers.rsprovider.version}/xml/features</repository>
                                     <repository>mvn:io.digitaljourney.platform.plugins.providers/xmlprovider-karafarchive/${platform.plugins.providers.xmlprovider.version}/xml/features</repository>
                                     <!-- Platform Modules -->
+									<repository>mvn:io.digitaljourney.platform.plugins.modules/events-karafarchive/${platform.plugins.modules.events.version}/xml/features</repository>									
                                     <repository>mvn:io.digitaljourney.platform.plugins.modules/journeyworkflowengine-karafarchive/${platform.plugins.modules.journeyworkflowengine.version}/xml/features</repository>
                                     <repository>mvn:io.digitaljourney.platform.plugins.modules/uam-karafarchive/${platform.plugins.modules.uam.version}/xml/features</repository>
                                     <repository>mvn:io.digitaljourney.platform.plugins.modules/rulesengine-karafarchive/${platform.plugins.modules.rulesengine.version}/xml/features</repository>
@@ -84,6 +85,7 @@
                                     <feature>errorpages</feature>
                                     <feature>standard-cxf-jaxrs-swagger</feature>
                                     <feature>standard-shiro-aspectj</feature>
+                                    <feature>events-rdb</feature>									
                                     <!-- platform Apps -->
                                     <feature>foundation</feature>
                                     <feature>journeydesigner</feature>
