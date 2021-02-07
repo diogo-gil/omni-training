@@ -95,6 +95,7 @@
                                     <feature>cachemanagerapp</feature>
                                     <feature>journeyworkflowengine-gateway-rest-spring</feature>
                                     <feature>journeyworkflowengine-gateway-aspect-mvc</feature>
+                                    <feature>cms-h2</feature>									
                                     <!--<feature>base-servicetracker-kubernetes</feature>-->
                                     <!-- Telco Plugins Modules -->
                                     <!-- Telco Plugins Apps -->
